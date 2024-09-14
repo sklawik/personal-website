@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import useService from "./hooks/useService";
+import { FaRegSadTear } from "react-icons/fa";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,18 +21,25 @@ export const metadata: Metadata = {
   description: "Personal website of a passionate web developer ❤️​ ",
 };
 
-export default function RootLayout({
+
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const isServiceOnline = await useService()
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+   
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          { isServiceOnline == true ? children : <div className="w-screen h-screen flex flex-row justify-center items-center gap-2 text-2xl">serwis jest offline <FaRegSadTear />
+            </div>}
+        </body>
+      </html> 
   );
 }

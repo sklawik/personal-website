@@ -21,7 +21,7 @@ export default function AnimateLetters(props: AnimateLettersProps) {
     return (
         <AnimatePresence>
             {letters.map((letter, index) =>
-                <motion.div
+                <motion.div key={index}
                     initial={{
                         y: -5,
                         opacity: 0,
