@@ -2,7 +2,6 @@ import Header from "./components/ui/Header";
 
 export default function Home() {
 
-
   return (
     <div className="flex flex-col font-[family-name:var(--font-geist-sans)] justify-center items-center ml-96 mr-96">
       <Header />
@@ -15,7 +14,7 @@ export default function Home() {
             project 1
           </div>
           <div className="p-2  w-full h-screen">
-            project 1
+            project 12
           </div>
         </section>
       </div>
