@@ -5,21 +5,23 @@ import AnimateLetters from './animations/AnimateLetters'
 
 export default function Header() {
     return (
-        <div className="w-full text-slate-200 sticky top-0 left-0 backdrop-blur-2xl flex flex-row justify-start items-center ml-96 mr-96">
-            <div className="flex flex-row items-center justify-center p-0.5">
+        <div className="w-full  text-slate-200 sticky top-0 left-0 backdrop-blur-2xl flex flex-row justify-start items-center ">
+            <div className="flex flex-row items-center justify-center p-0.5 w-full">
                 <AnimateLetters letters='Sebastian_Klawikowski'></AnimateLetters>
                 <MotionDiv 
                 initial={{
-                    y: -10,
+                    x: 10,
+                    scale: 0.99,
                     opacity: 0,
                 }}
                 animate={{
-                    y: 0,
+                    x: 0,
                     opacity: 1,
+                    scale: 1,
                     transition:{
-                        duration: 1.5,
+                        duration: 0.5,
                         ease: 'easeIn',
-                        delay: 1
+                        delay: 0.75
                     }
                 }}
                 >

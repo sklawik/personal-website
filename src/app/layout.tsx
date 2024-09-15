@@ -31,6 +31,8 @@ export default async function RootLayout({
 
   const isServiceOnline = await useService()
 
+  
+
   return (
    
       <html lang="en">

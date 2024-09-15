@@ -14,12 +14,35 @@ datasource db {
 }
 
 model ServiceSettings {
-  id BigInt @id @default(autoincrement())
-  canUsersAccess Boolean
+  id             BigInt  @id @default(autoincrement())
+  isServiceOnline Boolean
 }
 
+model Post {
+  id      BigInt @id @default(autoincrement())
+  content String
+}
+
+model Role {
+  id BigInt @id  @default(autoincrement())
+  name String
+  hexColor String
+  permissions Int @default(0)
+}
+
+// unlogged 
+
+// 1 - can comment posts
+// 2 - can create new posts
+// 4 - can react with custom emojis (user can upload their own reaction while reacting to post)
+// 8 -  manage other users 
+// 16 - delete posts
+// 32 - edit posts
+// 64 - can do something else
+// 128 - can do something else aswell
+// 255 - means superuser (can access admin dashboard)
+
 model User {
-  id BigInt @id @default(autoincrement())
+  id       BigInt @id @default(autoincrement())
   password String
-  perms Int
 }

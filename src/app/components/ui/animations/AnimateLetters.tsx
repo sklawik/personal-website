@@ -12,7 +12,7 @@ export default function AnimateLetters(props: AnimateLettersProps) {
     const letters: string[] = []
 
     for (let i = 0; i < props.letters.length; i++) {
-            letters.push(props.letters[i])
+        letters.push(props.letters[i])
     }
 
 

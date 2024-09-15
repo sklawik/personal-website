@@ -13,12 +13,12 @@ export default async function useService() {
 
     if(!result){
 
-       const res = await prisma.serviceSettings.create({data:{canUsersAccess: true}})
+       const res = await prisma.serviceSettings.create({data:{isServiceOnline: true}})
        if(res)
        isWebsiteAvailable = true
     }
     else{
-        isWebsiteAvailable = result.canUsersAccess
+        isWebsiteAvailable = result.isServiceOnline
     }
     
     
