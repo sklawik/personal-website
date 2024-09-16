@@ -31,15 +31,15 @@ export default async function RootLayout({
 
   const isServiceOnline = await useService()
 
-  
+
 
   return (
    
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
         >
-          { isServiceOnline == true ? children : <div className="w-screen h-screen flex flex-row justify-center items-center gap-2 text-2xl">serwis jest offline <FaRegSadTear />
+          { isServiceOnline == true ? children : <div className="w-screen h-svh max-h-svh flex flex-row justify-center items-center gap-2 text-2xl">serwis jest offline <FaRegSadTear />
             </div>}
         </body>
       </html> 
