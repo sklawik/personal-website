@@ -43,7 +43,7 @@ export default function layout(props: PropsWithChildren) {
     ]
 
     return (
-        <div className="flex flex-col w-full h-svh bg-black">
+        <div className="flex flex-col w-full h-svh bg-black text-white">
             <nav className="w-full">
                 <div className="text-xl">
                     <Link href="/admin" className="cursor-pointer hover:scale-95 duration-100"> Panel zarządzania witryną</Link>
