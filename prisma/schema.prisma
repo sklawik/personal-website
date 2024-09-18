@@ -14,20 +14,20 @@ datasource db {
 }
 
 model ServiceSettings {
-  id             BigInt  @id @default(autoincrement())
+  id              BigInt  @id @unique @default(autoincrement())
   isServiceOnline Boolean
 }
 
 model Post {
-  id      BigInt @id @default(autoincrement())
+  id      BigInt @id @unique @default(autoincrement())
   content String
 }
 
 model Role {
-  id BigInt @id  @default(autoincrement())
-  name String
-  hexColor String
-  permissions Int @default(0)
+  id          BigInt @id @unique @default(autoincrement())
+  name        String
+  hexColor    String
+  permissions Int    @default(0)
 }
 
 // unlogged 

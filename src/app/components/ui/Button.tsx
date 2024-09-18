@@ -1,11 +1,28 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, ReactNode } from 'react'
 
-export default function Button<HTMLButtonElement>(props: PropsWithChildren<HTMLButtonElement>){
+type ButtonProps = {
+  variant?: 'ghost' | 'default',
+  children: ReactNode
+}
+
+export default function Button(props: ButtonProps) {
+
+  let styles = [
+    {
+      variant: 'ghost',
+      style: "text-slate-100  bg-slate-950 border-2 duration-100 border-slate-800 px-3 py-0.5 hover:bg-black ",
+    },
+    {
+      variant: 'default',
+      style: "py-1 px-3  bg-white text-slate-800 outline-none select-none cursor-pointer duration-250 hover:bg-slate-200 border-gray-500 transition-all"
+    }
+
+
+  ]
+
   return (
+    <button {...props} className={props.variant === 'ghost' ? styles[0].style : styles[1].style} >{props.children}</button>
 
 
-        <button {...props} className="py-1 px-4 text-sm bg-white text-black rounded-md outline-none select-none cursor-pointer hover:scale-95 duration-100 hover:bg-slate-200 hover:text-sm">{props.children}</button>
-
-   
   )
 }
