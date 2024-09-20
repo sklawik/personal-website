@@ -8,6 +8,9 @@ type RolePermissionProps = {
 
 class RolePermissions {
 
+    displayName = [
+        
+    ]
     rolePerms = 0
 
      constructor (permissions: number){

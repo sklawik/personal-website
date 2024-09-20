@@ -11,7 +11,7 @@ import { redirect, RedirectType, usePathname } from 'next/navigation'
 import { NextResponse } from 'next/server'
 import { permission } from 'process'
 import React from 'react'
-
+import {twMerge} from 'tailwind-merge'
 
 
 let RoleRow = (props) => {
@@ -53,7 +53,7 @@ export default async function roles() {
     let dataSplitted = theData?.toString().split(',')
     console.log(dataSplitted)
     let roleId = dataSplitted?.at(0)
-    let perms: string = dataSplitted?.at(1)
+    let perms: any = dataSplitted?.at(1)
 
 
 
@@ -81,14 +81,12 @@ export default async function roles() {
   //   permissions: 255
   // }})
 
-
-
-
+  
 
   return (
     <div className="flex-grow w-full max-h-svh flex flex-col ">
       <div className="m-12  px-2 flex flex-col gap-1 flex-grow overflow-y-scroll snap-y  ">
-        <div className="snap-start"></div>
+
         {roles?.map((role) => (
           <div className="flex flex-row gap-2  w-full" key={role.id}>
             <div>
@@ -97,26 +95,22 @@ export default async function roles() {
             <div>
               {role.name}
             </div>
-            <Button variant='default' style={{ backgroundColor: role.hexColor }}>
+            <button variant='default' style={{color: role.hexColor}}>
               {role.hexColor}
-            </Button>
+            </button>
 
             <form action={handleClick} className="flex flex-row flex-wrap gap-2 text-xs">
-              <div className="">
+              <div className="flex flex-row gap-1 ">
                 {usePermission(role.permissions, 'role').getRolePermissions().map(perm =>
                   <RoleRow name='roleId' enabled={perm.isEnabled} value={[role.id, perm.permId ^ role.permissions]} role={role} perms={perm.permId ^ role.permissions}>
                     {perm.displayName}
                   </RoleRow>)}
               </div>
               <div className="border-l-2 b-white ml-4 ">
-               
-                  <button type='submit' name='roleId' value={[role.id, role.permissions == 255 ? 0 : 255 ]} >
-                    {role.permissions == 255 ? <div className="text-green-500">Superuser</div> : <div className="text-slate-300">Superuser</div>}
-                  </button>
-            
-
+                <button className='w-full' type='submit' name='roleId' value={[role.id, role.permissions == 255 ? 0 : 255]} >
+                  {role.permissions == 255 ? <div className="bg-green-600 w-full px-1 rounded-sm text-white">Superuser</div> : <div className="text-slate-300">Superuser</div>}
+                </button>
               </div>
-
             </form>
           </div>
 

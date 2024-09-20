@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import useService from "./hooks/useService";
 import { FaRegSadTear } from "react-icons/fa";
+import DynamicHeader from "./components/DynamicHeader";
 
 
 const geistSans = localFont({
@@ -39,6 +40,7 @@ export default async function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
         >
+          <DynamicHeader/>
           { isServiceOnline == true ? children : <div className="w-screen h-svh max-h-svh flex flex-row justify-center items-center gap-2 text-2xl">serwis jest offline <FaRegSadTear />
             </div>}
         </body>
