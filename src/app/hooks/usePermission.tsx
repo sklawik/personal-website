@@ -1,7 +1,7 @@
 
 type RolePermissionProps = {
     displayName: string | Error,
-    isEnabled: Boolean,
+    isEnabled: boolean,
     permId: number
 }
 
@@ -18,7 +18,7 @@ class RolePermissions {
         
     }
 
-    private getRoleDisplayNameFromNumber<String>(roleNumber: number){
+    private getRoleDisplayNameFromNumber(roleNumber: number){
         switch(roleNumber){
             case 1: return 'komentowanie postów'
             case 2: return 'tworzenie nowych postów'
@@ -33,12 +33,12 @@ class RolePermissions {
      
     }
 
-    private isPermissionEnabled<Boolean>(permissions: number, permissionToCheck: number){
+    private isPermissionEnabled(permissions: number, permissionToCheck: number){
         return (permissionToCheck&permissions) == 0 ? false : true
     }
 
     getRolePermissions(){
-        let list: RolePermissionProps[] = []
+        const list: RolePermissionProps[] = []
         for(let i=1; i<255; i+=i){
             list.push({
                 isEnabled: this.isPermissionEnabled(this.rolePerms, i),
@@ -52,37 +52,37 @@ class RolePermissions {
 
 
 
-    canCommentPosts<Boolean>() {
+    canCommentPosts() {
         return (this.rolePerms & 1) == 1? true : false
     }
 
-    canCreateNewPosts<Boolean>() {
+    canCreateNewPosts() {
         return this.rolePerms & 2 ? true : false
     }
 
-    canReactWithCustomEmojis<Boolean>() {
+    canReactWithCustomEmojis() {
         return (this.rolePerms & 4) == 4 ? true : false
     }
 
-    canManageUsers<Boolean>() {
+    canManageUsers() {
         return this.rolePerms & 8 ? true : false
     }
 
-    canDeletePosts<Boolean>() {
+    canDeletePosts() {
         return this.rolePerms & 16 ? true : false
     }
 
-    canEditPosts<Boolean>() {
+    canEditPosts() {
         return this.rolePerms & 32 ? true : false
     }
-    canDoSomething<Boolean>() {
+    canDoSomething() {
         return (this.rolePerms & 64) == 64 ? true : false
     }
 
-    canDoSomethingElse<Boolean>() {
+    canDoSomethingElse() {
         return this.rolePerms&128 ? true : false
     }
-    isSuperuser<Boolean>() {
+    isSuperuser() {
         return this.rolePerms == 255 ? true : false
     }
 
@@ -195,7 +195,7 @@ class RolePermissions {
 
 
     }
-    toText(permission: modifyPermissionProps){
+    toText(){
 
     }
 
@@ -208,7 +208,7 @@ type useRoleProps = (
 
 export const usePermission: useRoleProps = (permissions, roleType) => {
 
-    let roleObject = new RolePermissions(permissions)
+    const roleObject = new RolePermissions(permissions)
     if (roleType == 'role') {
 
 

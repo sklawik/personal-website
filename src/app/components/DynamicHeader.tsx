@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, MotionConfig, Variants } from 'framer-motion'
-import { header } from 'framer-motion/client'
+import { motion, Variants } from 'framer-motion'
+
 import React, { useState } from 'react'
 
 export default function DynamicHeader() {
@@ -37,7 +37,7 @@ export default function DynamicHeader() {
         }
     }
 
-    let [currentVariant, setCurrentVariant] = useState('floating')
+    const [currentVariant, setCurrentVariant] = useState('floating')
 
     return (
             <motion.div
@@ -45,8 +45,8 @@ export default function DynamicHeader() {
                 initial='static'
                 animate={currentVariant} 
             >
-                <div onClick={e=>setCurrentVariant('floating')}>animate 1</div>
-                <div onClick={e=>setCurrentVariant('static')}>animate 1</div>
+                <div onClick={()=>setCurrentVariant('floating')}>animate 1</div>
+                <div onClick={()=>setCurrentVariant('static')}>animate 1</div>
             </motion.div>
     )
 }

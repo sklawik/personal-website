@@ -1,6 +1,6 @@
-import { AppProps } from 'next/app'
+
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+
 import React, { PropsWithChildren } from 'react'
 import { headers } from 'next/headers'
 
@@ -13,13 +13,13 @@ export default function layout(props: PropsWithChildren) {
 
 
 
-    let url = headers().get('referer')
-    let pathSplitted = url?.split('/')
-    let partOfURL = pathSplitted?.at(pathSplitted.length-1)
+    const url = headers().get('referer')
+    const pathSplitted = url?.split('/')
+    const partOfURL = pathSplitted?.at(pathSplitted.length-1)
     
 
 
-    let  urls: UrlObject[] = [
+    const  urls: UrlObject[] = [
         {
             path:  '/admin/roles',
             name: 'Role'
@@ -60,7 +60,7 @@ export default function layout(props: PropsWithChildren) {
                     [&>*:hover]:scale-95
                     flex flex-col  flex-grow  gap-1 *:ml-4 *:cursor-pointer text-slate-200 text-md">
                        {urls.map(url=>
-                      <Link href={url.path}> <li className={url.path=='/admin/'+partOfURL?'text-white':'text-gray-300'}> {url.name}</li></Link> 
+                      <Link key={url.name} href={url.path}> <li className={url.path=='/admin/'+partOfURL?'text-white':'text-gray-300'}> {url.name}</li></Link> 
                        )}
 
                     </ul>
