@@ -1,17 +1,23 @@
 "use client"
 
 import { motion, MotionConfig, Variants } from 'framer-motion'
-import React from 'react'
+import { header } from 'framer-motion/client'
+import React, { useState } from 'react'
 
 export default function DynamicHeader() {
+
+   
+
+
 
     const headerVariants: Variants = {
         static: {
             x: 0,
-            y: 0
+            y: 0,
+            position: 'fixed'
         },
         floating: {
-            position: 'relative',
+            position: 'fixed',
             backgroundColor: 'blue',
             height: 'auto',
             width: '8rem',
@@ -24,28 +30,23 @@ export default function DynamicHeader() {
                 duration: 1,
                 ease: 'easeIn'
             },
-            borderRadius: '5rem',
+            borderRadius: '2.5rem',
             padding: '0.25rem',
-            scale: 0
             
-        },
-        scale:{
-            scale: 1
+            
         }
     }
 
+    let [currentVariant, setCurrentVariant] = useState('floating')
+
     return (
-        <section className="fixed left-0 top-0 w-full h-screen  z-10 flex flex-col justify-start items-center">
             <motion.div
-            
-            animate='scale'
                 variants={headerVariants}
-                initial='floating'
+                initial='static'
+                animate={currentVariant} 
             >
-                <div>stuff</div>
+                <div onClick={e=>setCurrentVariant('floating')}>animate 1</div>
+                <div onClick={e=>setCurrentVariant('static')}>animate 1</div>
             </motion.div>
-        </section>
-
-
     )
 }

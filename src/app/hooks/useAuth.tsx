@@ -1,25 +1,40 @@
 import React from 'react'
 
-enum PermissionsForPost  {
+enum PermissionsForPost {
 
 }
 
 type Role = {
-    name: string,
-    hexColor: string
-    
+  name: string,
+  hexColor: string
+
 }
 
 type User = {
-    nickname: string,
-    email: string,
-    roles: []
+  nickname: string,
+  email: string,
+  roles: []
 }
+
 
 
 
 
 export default function useAuth() {
+
+  class Auth {
+
+    isUserLoggedIn<Boolean>() {
+
+    }
+
+    getUser() {
+      
+    }
+  }
+
+  let auth = new Auth()
+
   return (
     <div>useAuth</div>
   )

@@ -3,6 +3,8 @@ import { FormEvent, PropsWithChildren } from "react";
 import Button from "./components/ui/Button";
 import Header from "./components/ui/Header";
 import AnimateLetters from "./components/ui/animations/AnimateLetters";
+import TestClient from "./TestClient";
+
 
 export default async function Home(props: PropsWithChildren) {
 
@@ -17,9 +19,14 @@ export default async function Home(props: PropsWithChildren) {
     console.log("aaaaaaaaa: " + data)
   }
 
+
+
   return (
     <div className="flex flex-col font-[family-name:var(--font-geist-sans)] justify-center items-center ml-96 mr-96">
       <Header />
+      <TestClient>
+        
+      </TestClient>
       <div className="flex flex-col flex-grow w-full h-svh ">
         <div className="w-full border-2 border-slate-950  rounded-xl p-1">
           <input className="w-full bg-slate-900 outline-none select-none"/>

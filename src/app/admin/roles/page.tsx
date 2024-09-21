@@ -11,7 +11,7 @@ import { redirect, RedirectType, usePathname } from 'next/navigation'
 import { NextResponse } from 'next/server'
 import { permission } from 'process'
 import React from 'react'
-import {twMerge} from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge'
 
 
 let RoleRow = (props) => {
@@ -81,10 +81,10 @@ export default async function roles() {
   //   permissions: 255
   // }})
 
-  
+
 
   return (
-    <div className="flex-grow w-full max-h-svh flex flex-col ">
+    <div className="flex-grow w-full max-h-svh flex flex-col">
       <div className="m-12  px-2 flex flex-col gap-1 flex-grow overflow-y-scroll snap-y  ">
 
         {roles?.map((role) => (
@@ -95,7 +95,7 @@ export default async function roles() {
             <div>
               {role.name}
             </div>
-            <button variant='default' style={{color: role.hexColor}}>
+            <button variant='default' style={{ color: role.hexColor }}>
               {role.hexColor}
             </button>
 
@@ -112,13 +112,53 @@ export default async function roles() {
                 </button>
               </div>
             </form>
+            <form action={async (e: FormData) => {
+              'use server'
+              let prisma = usePrisma()
+              await prisma.role.delete({
+                where:
+                {
+                  id: role.id
+                }
+              })
+              redirect('/admin/roles')
+            }}>
+              <button type='submit' className='bg-red-500 px-2.5 text-sm py-0.5 text-red-100'>
+                Usuń
+              </button>
+            </form>
           </div>
 
         ))}
 
         <div className="snap-end"></div>
       </div>
+      <form className="flex flex-col gap-1 w-1/4 text-slate-800" action={async (e: FormData) => {
+        'use server'
+        let roleName = e.get('roleName')
+        let roleHexColor = e.get('roleHexColor')
+        let rolePerms = e.get('rolePerms')
 
+        if (roleName == null || roleHexColor == null || rolePerms == null)
+          return
+
+        let prisma = usePrisma()
+        await prisma.role.create({
+          data: {
+            hexColor: roleHexColor,
+            permissions: Number.parseInt(rolePerms),
+            name: roleName
+          }
+        })
+
+        redirect('/admin/roles')
+
+      }}>
+        <input name='roleName' placeholder='new name for a role' />
+        <input name='roleHexColor' placeholder='ex. #ff0000' />
+        <input name='rolePerms' placeholder='1' />
+        <button type='submit'>dodaj</button>
+      </form>
 
     </div>
   )
