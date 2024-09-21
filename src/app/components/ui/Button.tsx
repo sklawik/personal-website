@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 type ButtonProps = {
   variant?: 'ghost' | 'default',
@@ -7,7 +7,7 @@ type ButtonProps = {
 
 export default function Button(props: ButtonProps) {
 
-  let styles = [
+  const styles = [
     {
       variant: 'ghost',
       style: "text-slate-100  bg-slate-950 border-2 duration-100 border-slate-800 px-3 py-0.5 hover:bg-black ",
