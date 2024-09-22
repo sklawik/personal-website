@@ -6,12 +6,15 @@
 
 generator client {
   provider = "prisma-client-js"
+   binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]  // Add this line
 }
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+
 
 model ServiceSettings {
   id              BigInt  @id @unique @default(autoincrement())
