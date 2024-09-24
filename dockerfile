@@ -13,6 +13,6 @@ RUN npx prisma generate
 # RUN npm run build
 
 
-CMD ["npm", "run", "dockerBuild"]
+ENTRYPOINT ["npm", "run", "dockerBuild"]
 
 
