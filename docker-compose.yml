@@ -1,7 +1,6 @@
 
 networks:
   my-network:
-    driver: bridge
     external: true
 
 services:
