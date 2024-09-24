@@ -1,7 +1,5 @@
 
-networks:
-  my-network:
-    external: true
+
 
 services:
   db:
@@ -17,10 +15,10 @@ services:
       retries: 60
       timeout: 5s
     networks:
-      - my-network 
+      - dokploy-network
   app:
     networks:
-      - my-network 
+      - dokploy-network
     build: .
     depends_on:
       db:
