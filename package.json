@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "dockerBuild": "npx prisma migrate deploy && next build && npm start",
     "start": "next start",
     "lint": "next lint"
   },
