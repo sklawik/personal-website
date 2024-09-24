@@ -1,3 +1,8 @@
+
+networks:
+  my-network:
+    driver: bridge
+
 services:
   db:
     image: mysql:8
@@ -10,8 +15,12 @@ services:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
       interval: 1s
       retries: 60
-      timeout: 30s
+      timeout: 5s
+    networks:
+      - my-network 
   app:
+    networks:
+      - my-network 
     build: .
     depends_on:
       db:
