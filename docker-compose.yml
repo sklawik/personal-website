@@ -1,7 +1,7 @@
 
 networks:
   my-network:
-    driver: bridge
+    driver: overlay
 
 services:
   db:
