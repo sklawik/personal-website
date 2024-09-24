@@ -3,6 +3,7 @@
 import { usePermission } from '@/app/hooks/usePermission';
 import { usePrisma } from '@/app/hooks/usePrisma'; // Ensure this is correctly set for server
 import { PrismaClient, Role } from '@prisma/client';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import React, { ReactNode } from 'react';
 
@@ -17,6 +18,9 @@ type RoleRowProps = {
 };
 
 const RoleRow = (props: RoleRowProps) => {
+ 
+  cookies()
+
   const { role, perms, enabled, children } = props;
 
   return (
@@ -30,6 +34,8 @@ const RoleRow = (props: RoleRowProps) => {
 
 export default async function roles() {
   const prisma = new PrismaClient();
+  if(!prisma )
+    return
   const roles = await prisma.role.findMany();
 
   return (
@@ -49,7 +55,7 @@ export default async function roles() {
               const perms: number = Number(dataSplitted?.at(1));
               if (!roleId) return;
               const prisma = usePrisma()
-              await prisma.role.update({
+              await prisma?.role.update({
                 data: {
                   permissions: perms,
                 },
@@ -77,7 +83,7 @@ export default async function roles() {
             <form action={async () => {
               "use server";
               const prisma = usePrisma()
-              await prisma.role.delete({ where: { id: role.id } });
+              await prisma?.role.delete({ where: { id: role.id } });
               redirect('/admin/roles');
             }}>
               <button type='submit' className='bg-red-500 px-2.5 text-sm py-0.5 text-red-100'>Usuń</button>
@@ -97,7 +103,7 @@ export default async function roles() {
         if (!roleName || !roleHexColor || isNaN(rolePerms)) return;
 
         const prisma = usePrisma();
-        await prisma.role.create({
+        await prisma?.role.create({
           data: {
             hexColor: roleHexColor as string,
             permissions: rolePerms,

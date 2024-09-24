@@ -2,7 +2,8 @@
 import Link from 'next/link'
 
 import React, { PropsWithChildren } from 'react'
-import { headers } from 'next/headers'
+import { cookies, headers } from 'next/headers'
+
 
 type UrlObject = {
     path: string,
@@ -11,7 +12,7 @@ type UrlObject = {
 
 export default function layout(props: PropsWithChildren) {
 
-
+    cookies()     
 
     const url = headers().get('referer')
     const pathSplitted = url?.split('/')

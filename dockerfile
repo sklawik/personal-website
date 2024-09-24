@@ -2,10 +2,14 @@ FROM node:latest
 
 WORKDIR /app
 COPY . .
-RUN apt-get update && apt-get install -y default-mysql-client
-
+COPY .env .env
+RUN apt-get update -y && apt-get install -y
 RUN npm install
-CMD ["sh", "-c", "until mysql -h db -u root -p123 -e 'select 1'; do sleep 5; done; npm run build"]
+RUN npx prisma generate
+RUN npx prisma migrate deploy
+RUN npm run build
+
+CMD ["npm", "run", "start"]
 
 
 
