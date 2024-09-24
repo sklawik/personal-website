@@ -8,9 +8,9 @@ services:
       - "33060:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
-      interval: 20s
-      retries: 10
-      timeout: 15s
+      interval: 1s
+      retries: 60
+      timeout: 30s
   app:
     build: .
     depends_on:
