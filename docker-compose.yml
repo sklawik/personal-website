@@ -2,6 +2,7 @@
 networks:
   my-network:
     driver: overlay
+    external: true
 
 services:
   db:
