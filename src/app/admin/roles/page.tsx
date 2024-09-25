@@ -3,7 +3,6 @@
 import { usePermission } from '@/app/hooks/usePermission';
 import {serversideUsePrisma} from '@/app/hooks/serversideUsePrisma'
 import { PrismaClient, Role } from '@prisma/client';
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import React, { ReactNode } from 'react';
 
@@ -19,7 +18,6 @@ type RoleRowProps = {
 
 const RoleRow = (props: RoleRowProps) => {
  
-  cookies()
 
   const { role, perms, enabled, children } = props;
 

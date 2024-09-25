@@ -56,7 +56,7 @@ class ServerConfig {
 }
 
 export const serversideUseConfig =async  () => {
-  let serverConfig = new ServerConfig();
+  const serverConfig = new ServerConfig();
     await serverConfig.initialize()
   return serverConfig;
 };

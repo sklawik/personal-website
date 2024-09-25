@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import React, { PropsWithChildren } from "react";
-import { cookies, headers } from "next/headers";
+import { headers } from "next/headers";
 
 type UrlObject = {
   path: string;
