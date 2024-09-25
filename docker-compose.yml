@@ -1,6 +1,3 @@
-
-
-
 services:
   db:
     image: mysql:8
@@ -8,22 +5,18 @@ services:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: blog
     ports:
-      - "33060:3306"
+      - "0.0.0.0:33060:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
       interval: 1s
       retries: 60
       timeout: 5s
-    networks:
-      - dokploy-network
   app:
-    networks:
-      - dokploy-network
     build: .
     depends_on:
       db:
         condition: service_healthy
     ports:
-      - "3001:3000"
+      - "0.0.0.0:3001:3000"
     environment:
         DATABASE_URL: mysql://root:123@db:3306/blog
