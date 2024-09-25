@@ -27,5 +27,5 @@ services:
     environment:
         DATABASE_URL: mysql://root:123@db:3306/blog
     networks:
-        - my network
+        - my-network
 
