@@ -1,4 +1,4 @@
-import { usePrisma } from "./serversideUsePrisma";
+import { serversideUsePrisma  } from "./serversideUsePrisma";
 
 class ServerConfig {
   constructor() {
@@ -16,7 +16,7 @@ class ServerConfig {
   }
 
   set isServiceAccessible(isAccessible: boolean) {
-    const prisma = usePrisma();
+    const prisma = serversideUsePrisma();
 
     if (prisma) {
       (async () => {
@@ -39,7 +39,7 @@ class ServerConfig {
   }
 
   async fetchDataFromDatabase() {
-    const prisma = usePrisma();
+    const prisma = serversideUsePrisma();
     const data = await prisma?.serviceConfig.findFirst({});
     if (!data) {
       await prisma?.serviceConfig.create({
