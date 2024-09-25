@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: blog
     ports:
-      - "0.0.0.0:33060:3306"
+      - 3306
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
       interval: 1s
@@ -23,19 +23,9 @@ services:
       db:
         condition: service_healthy
     ports:
-      - "0.0.0.0:3001:3000"
+      - 3000
     environment:
         DATABASE_URL: mysql://root:123@db:3306/blog
     networks:
         - dokploy-network
-    labels:
-        - traefik.enable=true
-        - traefik.http.routers.blog2-yes-b7983b-8-web.rule=Host(`sklawik.pl`)
-        - traefik.http.routers.blog2-yes-b7983b-8-web.entrypoints=web
-        - traefik.http.routers.blog2-yes-b7983b-8-web.middlewares=redirect-to-https@file
-        - traefik.http.routers.blog2-yes-b7983b-8-websecure.rule=Host(`sklawik.pl`)
-        - traefik.http.routers.blog2-yes-b7983b-8-websecure.entrypoints=websecure
-        - traefik.http.routers.blog2-yes-b7983b-8-websecure.tls.certresolver=letsencrypt
-        - traefik.http.services.blog2-yes-b7983b-8-websecure.loadbalancer.server.port=3001
-        - traefik.http.services.blog2-yes-b7983b-8-web.loadbalancer.server.port=3001
 
