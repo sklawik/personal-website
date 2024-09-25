@@ -18,7 +18,7 @@ datasource db {
 
 model ServiceSettings {
   id              BigInt  @id @unique @default(autoincrement())
-  isServiceOnline Boolean
+  isServiceOnline Boolean @default(false)
 }
 
 model Post {

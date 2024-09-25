@@ -5,11 +5,6 @@ import { motion, Variants } from 'framer-motion'
 import React, { useState } from 'react'
 
 export default function DynamicHeader() {
-
-   
-
-
-
     const headerVariants: Variants = {
         static: {
             x: 0,
