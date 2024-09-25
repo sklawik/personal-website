@@ -1,3 +1,6 @@
+networks:
+  dokploy-network:
+    external: true
 
 services:
   db:
