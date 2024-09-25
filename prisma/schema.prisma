@@ -16,9 +16,9 @@ datasource db {
 
 
 
-model ServiceSettings {
+model ServiceConfig {
   id              BigInt  @id @unique @default(autoincrement())
-  isServiceOnline Boolean @default(false)
+  isServiceAccessible Boolean @default(false)
 }
 
 model Post {
