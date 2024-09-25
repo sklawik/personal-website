@@ -1,4 +1,4 @@
-import { usePrisma } from "./usePrisma";
+import { usePrisma } from "./serversideUsePrisma";
 
 class ServerConfig {
   constructor() {
