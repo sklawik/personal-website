@@ -39,7 +39,10 @@ export default function DynamicHeader() {
 
     const [currentVariant, setCurrentVariant] = useState('floating')
 
+    const hidden = true
+
     return (
+        hidden ||
             <motion.div
                 variants={headerVariants}
                 initial='static'
@@ -48,5 +51,6 @@ export default function DynamicHeader() {
                 <div onClick={()=>setCurrentVariant('floating')}>animate 1</div>
                 <div onClick={()=>setCurrentVariant('static')}>animate 1</div>
             </motion.div>
+        
     )
 }
