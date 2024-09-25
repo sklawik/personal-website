@@ -1,4 +1,6 @@
-
+networks:
+  my-network:
+    driver: bridge
 
 services:
   db:
@@ -27,6 +29,3 @@ services:
     networks:
         - my network
 
-networks:
-  my-network:
-    driver: bridge
