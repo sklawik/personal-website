@@ -1,3 +1,5 @@
+
+
 services:
   db:
     image: mysql:8
@@ -11,6 +13,8 @@ services:
       interval: 1s
       retries: 60
       timeout: 5s
+    networks:
+      - my-network
   app:
     build: .
     depends_on:
@@ -20,3 +24,9 @@ services:
       - "0.0.0.0:3001:3000"
     environment:
         DATABASE_URL: mysql://root:123@db:3306/blog
+    networks:
+        - my network
+
+networks:
+  my-network:
+    driver: bridge
