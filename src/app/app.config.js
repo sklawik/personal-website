@@ -1,3 +1,3 @@
 module.exports = {
-    isServiceAccessible: true
+    isServiceAccessible: false
 }
