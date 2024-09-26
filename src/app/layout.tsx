@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { FaRegSadTear } from "react-icons/fa";
 import DynamicHeader from "./components/DynamicHeader";
 import { serversideUseConfig } from "./hooks/serversideUseConfig";
 
@@ -30,8 +29,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const serviceConfig = await serversideUseConfig()
 
+  
 
 
 
@@ -42,8 +41,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
         >
           <DynamicHeader/>
-          {   serviceConfig.isServiceAccessible == true ? children : <div className="w-screen h-svh max-h-svh flex flex-row justify-center items-center gap-2 text-2xl">serwis jest offline <FaRegSadTear />
-            </div>}
+          {children}
         </body>
       </html> 
   );

@@ -1,5 +1,6 @@
-import { serversideUsePrisma  } from "./serversideUsePrisma";
+import  GlobalConfig from '@/app/app.config'
 
+import { serversideUsePrisma  } from "./serversideUsePrisma";
 class ServerConfig {
   constructor() {
     this.initialize()
@@ -36,6 +37,8 @@ class ServerConfig {
     }
   
     this._isServiceAccessible = isAccessible;
+    GlobalConfig.isServiceAccessible = this._isServiceAccessible
+    
   }
 
   async fetchDataFromDatabase() {
@@ -50,9 +53,10 @@ class ServerConfig {
       this.fetchDataFromDatabase();
       return;
     }
-  
+    
     this._isServiceAccessible = data?.isServiceAccessible;
-  }
+    GlobalConfig.isServiceAccessible = this._isServiceAccessible
+    }
 }
 
 export const serversideUseConfig =async  () => {
