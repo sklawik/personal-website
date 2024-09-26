@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "eslint --fix && npx prisma migrate dev && next dev",
+    "dev": "eslint . --fix && npx prisma migrate dev && next dev",
     "build": "npx prisma migrate dev && next build",
-    "dockerBuild": "eslint --fix && npx prisma migrate deploy && next build && npm start",
+    "dockerBuild": "eslint . --fix && npx prisma migrate deploy && next build && npm start",
     "start": "next start",
     "lint": "next lint"
   },

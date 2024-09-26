@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import GlobalConfig from "@/app/app.config";
 
-export const middleware = async (req: NextRequest, res: NextResponse) => {
+export const middleware = async (req: NextRequest) => {
   if (GlobalConfig.isServiceAccessible) {
     const response = NextResponse.next();
     return response;
