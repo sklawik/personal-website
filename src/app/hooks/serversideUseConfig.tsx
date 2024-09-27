@@ -41,8 +41,7 @@ class ServerConfig {
     }
   
     this._isServiceAccessible = isAccessible;
-    process.env.IS_SERVICE_ONLINE = isAccessible ? 'true' : 'false' 
-    console.log(process.env.IS_SERVICE_ONLINE)
+    GlobalConfig.isServiceAccessible = isAccessible
   }
 
   async fetchDataFromDatabase() {
