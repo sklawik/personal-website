@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import DynamicHeader from "./components/DynamicHeader";
-
+import Footer from "./components/Footer";
+import GlobalConfig from '@/app/app.config'
+import ServiceOffline from "./serviceOffline/page";
+import { headers } from "next/headers";
 
 
 const geistSans = localFont({
@@ -30,7 +33,11 @@ export default async function RootLayout({
 }>) {
 
 
-  
+  const url = headers().get('referer')
+  let theURL = null
+  if(url){
+     theURL = new URL(url)
+  }
 
 
 
@@ -41,7 +48,8 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
         >
           <DynamicHeader/>
-          {children}
+  { (GlobalConfig.isServiceAccessible || theURL?.pathname.startsWith('/admin')) ==true ? children : <ServiceOffline/>}
+          <Footer></Footer>
         </body>
       </html> 
   );

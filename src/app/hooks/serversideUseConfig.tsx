@@ -1,6 +1,7 @@
-import  GlobalConfig from '@/app/app.config'
 
 import { serversideUsePrisma  } from "./serversideUsePrisma";
+import GlobalConfig from '@/app/app.config'
+
 class ServerConfig {
   constructor() {
     this.initialize()
@@ -13,7 +14,10 @@ class ServerConfig {
    _isServiceAccessible: boolean = false;
 
   get isServiceAccessible() {
-    return this._isServiceAccessible;
+  
+    
+
+    return GlobalConfig.isServiceAccessible
   }
 
   set isServiceAccessible(isAccessible: boolean) {
@@ -37,8 +41,8 @@ class ServerConfig {
     }
   
     this._isServiceAccessible = isAccessible;
-    GlobalConfig.isServiceAccessible = this._isServiceAccessible
-    
+    process.env.IS_SERVICE_ONLINE = isAccessible ? 'true' : 'false' 
+    console.log(process.env.IS_SERVICE_ONLINE)
   }
 
   async fetchDataFromDatabase() {
@@ -55,7 +59,7 @@ class ServerConfig {
     }
     
     this._isServiceAccessible = data?.isServiceAccessible;
-    GlobalConfig.isServiceAccessible = this._isServiceAccessible
+    GlobalConfig.isServiceAccessible = this._isServiceAccessible 
     }
 }
 
