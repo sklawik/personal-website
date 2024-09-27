@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "eslint . --fix && npx prisma migrate dev && next dev",
     "build": "npx prisma migrate dev && next build",
-    "dockerBuild": "cat .env && eslint . --fix && npx prisma migrate deploy && next build && npm start",
+    "dockerBuild": "ls -a && eslint . --fix && npx prisma migrate deploy && next build && npm start",
     "start": "next start",
     "lint": "next lint"
   },
