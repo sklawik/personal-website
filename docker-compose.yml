@@ -26,6 +26,7 @@ services:
       - 3000
     environment:
         DATABASE_URL: mysql://root:123@db:3306/blog
+        NEXT_PUBLIC_APP_VERSION: "Alpha 0.1"
     networks:
         - dokploy-network
 
