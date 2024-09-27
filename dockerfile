@@ -2,7 +2,6 @@ FROM node:latest
 
 WORKDIR /app
 COPY . .
-COPY ./app.config.js app.config.js
 COPY .env .env
 ENV DATABASE_URL=mysql://root:123@db:3306/blog
 RUN apt-get update -y && apt-get install -y
