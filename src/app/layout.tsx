@@ -38,6 +38,8 @@ export default async function RootLayout({
   if(url){
      theURL = new URL(url)
   }
+  
+  let globalConfig = GlobalConfig
 
 
 
@@ -48,7 +50,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
         >
           <DynamicHeader/>
-  { (GlobalConfig.isServiceAccessible || theURL?.pathname.startsWith('/admin')) ==true ? children : <ServiceOffline/>}
+  { (globalConfig.isServiceAccessible || theURL?.pathname.startsWith('/admin')) ==true ? children : <ServiceOffline/>}
           <Footer></Footer>
         </body>
       </html> 
