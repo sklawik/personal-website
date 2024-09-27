@@ -1,4 +1,4 @@
-"use server"; // Place at the top of the file
+"use server"
 
 import { usePermission } from '@/app/hooks/usePermission';
 import {serversideUsePrisma} from '@/app/hooks/serversideUsePrisma'
