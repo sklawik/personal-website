@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import ServiceOffline from "./serviceOffline/page";
 import { cookies, headers } from "next/headers";
 
+export const dynamic = 'force-dynamic';
 
 
 const geistSans = localFont({
