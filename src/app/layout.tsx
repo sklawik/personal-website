@@ -50,7 +50,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
         >
           <DynamicHeader/>
-  { (globalConfig.isServiceAccessible || theURL?.pathname.startsWith('/admin')) ==true ? children : <ServiceOffline/>}
+  { (globalConfig.default.isServiceAccessible || theURL?.pathname.startsWith('/admin')) ==true ? children : <ServiceOffline/>}
           <Footer></Footer>
         </body>
       </html> 
