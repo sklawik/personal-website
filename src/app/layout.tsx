@@ -41,7 +41,7 @@ export default async function RootLayout({
   
   let globalConfig = await import('@/app/app.config.mjs')
 
-
+  console.log("DEBUG PROD: " + theURL?.pathname.startsWith('/admin'))
 
   return (
    
