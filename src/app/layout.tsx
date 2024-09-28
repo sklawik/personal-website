@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 
 import ServiceOffline from "./serviceOffline/page";
 import { cookies, headers } from "next/headers";
-import { useRouter } from "next/navigation";
+
 
 
 const geistSans = localFont({
@@ -39,7 +39,7 @@ export default async function RootLayout({
   if(url){
      theURL = new URL(url)
   }
-  const router = useRouter()
+
   
 
   
