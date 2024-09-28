@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import DynamicHeader from "./components/DynamicHeader";
 import Footer from "./components/Footer";
-import GlobalConfig from '@/app/app.config'
+
 import ServiceOffline from "./serviceOffline/page";
 import { headers } from "next/headers";
 
@@ -39,7 +39,7 @@ export default async function RootLayout({
      theURL = new URL(url)
   }
   
-  let globalConfig = GlobalConfig
+  let globalConfig = await import('@/app/app.config')
 
 
 
