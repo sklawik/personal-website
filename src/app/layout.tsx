@@ -41,6 +41,8 @@ export default async function RootLayout({
      theURL = new URL(url)
   }
 
+  console.log("test 2: " + theURL)
+
   
 
   
