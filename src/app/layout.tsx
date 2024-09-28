@@ -5,7 +5,8 @@ import DynamicHeader from "./components/DynamicHeader";
 import Footer from "./components/Footer";
 
 import ServiceOffline from "./serviceOffline/page";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { useRouter } from "next/navigation";
 
 
 const geistSans = localFont({
@@ -32,14 +33,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-
+  cookies()
   const url = headers().get('referer')
   let theURL = null
   if(url){
      theURL = new URL(url)
   }
+  const router = useRouter()
   
-  let globalConfig = await import('@/app/app.config.mjs')
+
+  
+  
+  const globalConfig = await import('@/app/app.config.mjs')
 
   console.log("DEBUG PROD: " + theURL?.pathname.startsWith('/admin'))
 
