@@ -1,6 +1,6 @@
 
 import { serversideUsePrisma  } from "./serversideUsePrisma";
-import GlobalConfig from '@/app/app.config'
+import GlobalConfig from '@/app/app.config.mjs'
 
 class ServerConfig {
   constructor() {

@@ -39,7 +39,7 @@ export default async function RootLayout({
      theURL = new URL(url)
   }
   
-  let globalConfig = await import('@/app/app.config')
+  let globalConfig = await import('@/app/app.config.mjs')
 
 
 
