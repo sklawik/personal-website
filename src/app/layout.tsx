@@ -5,10 +5,7 @@ import DynamicHeader from "./components/DynamicHeader";
 import Footer from "./components/Footer";
 
 import ServiceOffline from "./serviceOffline/page";
-import { cookies, headers } from "next/headers";
-
-export const dynamic = 'force-dynamic';
-
+import { serversideUsePrisma } from "./hooks/serversideUsePrisma";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,41 +23,38 @@ export const metadata: Metadata = {
   description: "Personal website of a passionate web developer ❤️​ ",
 };
 
-
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ 
 
-  cookies()
-  const url = headers().get('referer')
-  let theURL = null
-  if(url){
-     theURL = new URL(url)
+  const prisma = serversideUsePrisma();
+  const data = await prisma?.serviceConfig.findFirst()
+  if(!data){
+    await prisma?.serviceConfig.create({
+      data:
+      {
+        isServiceAccessible: true
+      }
+    })
   }
-
-  console.log("test 2: " + theURL)
-
-  
+  const isServiceOnline = data?.isServiceAccessible;
 
   
-  
-  const globalConfig = await import('@/app/app.config.mjs')
-
-  console.log("DEBUG PROD: " + theURL?.pathname.startsWith('/admin'))
-
   return (
-   
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
-        >
-          <DynamicHeader/>
-  { (globalConfig.default.isServiceAccessible || theURL?.pathname.startsWith('/admin')) ==true ? children : <ServiceOffline/>}
-          <Footer></Footer>
-        </body>
-      </html> 
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
+      >
+        <DynamicHeader />
+        {isServiceOnline?
+          children : 
+          <ServiceOffline />
+        }
+        <Footer></Footer>
+      </body>
+    </html>
   );
 }

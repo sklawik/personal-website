@@ -23,7 +23,7 @@ export default async function Home() {
             test
 
           </div>
-          <div className="p-2  w-full h-screen">
+          <div className="p-2 w-full h-screen">
             project 12
           </div>
         </section>

@@ -1,6 +1,6 @@
 
 import { serversideUsePrisma  } from "./serversideUsePrisma";
-import GlobalConfig from '@/app/app.config.mjs'
+import GlobalConfig from '@/app/app.config.js'
 
 class ServerConfig {
   constructor() {
@@ -17,7 +17,7 @@ class ServerConfig {
   
     
 
-    return GlobalConfig.isServiceAccessible
+    return this._isServiceAccessible
   }
 
   set isServiceAccessible(isAccessible: boolean) {

@@ -35,6 +35,10 @@ export default function layout(props: PropsWithChildren) {
     },
   ];
 
+  const isSuperuser: boolean = false
+  if(!isSuperuser)
+    return <div>You are missing permissions to view this page.</div>
+
   return (
     <div className="flex flex-col w-full h-svh bg-black text-white">
       <nav className="w-full">
