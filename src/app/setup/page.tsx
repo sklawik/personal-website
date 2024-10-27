@@ -3,7 +3,7 @@
 import React from "react";
 
 import TextSlider from "../components/ui/TextSlider";
-import Button from "../components/ui/Button";
+
 export default function page() {
   return (
     <div>

@@ -34,14 +34,16 @@ export default function TextSlider(props: TextSliderProps) {
     },
   };
 
-  const contentRef = useRef(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
   const savedContentHeight = useRef(0);
   const [currentVariant, setCurrentVariant] = useState("shown");
 
   useEffect(() => {
     if (contentRef.current) {
-      const currentOffsetHeight = contentRef.current.offsetHeight;
+
+      const height: number = contentRef.current.offsetHeight;
+      const currentOffsetHeight = height;
       if (currentOffsetHeight != 0) {
         console.log("savedcontentheight: " + currentOffsetHeight);
         savedContentHeight.current = contentRef.current.offsetHeight;

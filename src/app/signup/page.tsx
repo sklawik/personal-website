@@ -1,7 +1,7 @@
 import React from "react";
 import { serversideUsePrisma } from "../hooks/serversideUsePrisma";
-import { cookies } from "next/headers";
-import { SignJWT } from "jose";
+// import { cookies } from "next/headers";
+// import { SignJWT } from "jose";
 
 export default function page() {
   return (
@@ -24,17 +24,16 @@ export default function page() {
                 email: _login
             }})
 
-            let payload = { 
-                test: "123",
+            // const payload = { 
+            //     test: "123",
+            // }
 
-            }
+            // const jwt = new SignJWT()
+            // const signed = jwt.sign()
 
-            let jwt = new SignJWT()
-            let signed = jwt.sign()
-
-           jwt.sign()
+          //  jwt.sign()
           
-            cookies().set("jwt", `${authData}`)
+            // cookies().set("jwt", `${authData}`)
 
         }}
     >
