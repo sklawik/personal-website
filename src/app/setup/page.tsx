@@ -1,27 +1,34 @@
-"use client";
-
 import React from "react";
 
-import TextSlider from "../components/ui/TextSlider";
+interface PageProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+export default function page(props: PageProps) {
+  const searchParams = props.searchParams;
+  console.log(searchParams);
 
-export default function page() {
+  const setupTitles = [
+    "Dodaj wymagane brakujące role oraz \nich uprawnienia do serwisu.",
+  ];
+
   return (
-    <div>
-      <section>
-        <TextSlider  openAtStart={true} trigger={<h1>Naglowek</h1>}>
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-            quidem fugit est omnis ullam. Ipsum consectetur molestiae ut, iusto,
-            alias obcaecati, numquam iste velit ullam eos nesciunt dolorum
-            cupiditate explicabo!
-          </div>
-        </TextSlider>
-        <TextSlider openAtStart={true} trigger={<h1>naglowek 2</h1>}>
-        <div className="flex flex-col gap-1">
-      qwe
-          </div>
-         
-        </TextSlider>
+    <div
+      className="flex flex-col  bg-gray-950  w-full h-full text-white
+  "
+    >
+      <section className="text-white text-xl flex flex-row justify-center items-center">
+        Setup {searchParams.step}/8
+      </section>
+      <section className="flex flex-col justify-center items-center h-full w-full bg-blue-950">
+        <form className="flex flex-col justify-center items-center gap-1 input:bg-white input:border-none input:text-gray-800 *:text-gray-500">
+          {setupTitles[Number(searchParams.step) - 1]}
+          <section>
+            Wszyscy <input defaultValue="Everyone"></input>
+          </section>
+          <section>
+            Superuser <input defaultValue="Superuser"></input>
+          </section>
+        </form>
       </section>
     </div>
   );
