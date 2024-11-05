@@ -1,6 +1,6 @@
 
 type RolePermissionProps = {
-    displayName: string | Error,
+    displayName: string,
     isEnabled: boolean,
     permId: number
 }
@@ -28,7 +28,7 @@ class RolePermissions {
             case 32: return 'edytowanie postów'
             case 64: return 'not yet implemented'
             case 128: return 'not yet implemented'
-            default: return new Error('invalid role')
+            default: return "invalid role index"
         }
      
     }
@@ -206,19 +206,15 @@ type useRoleProps = (
     roleType: 'post' | 'role'
 ) => RolePermissions ;
 
-export const usePermission: useRoleProps = (permissions, roleType) => {
+export const UsePermission: useRoleProps = (permissions, roleType) => {
 
     const roleObject = new RolePermissions(permissions)
+    if(!roleObject)
+        throw new Error("Failed to initialize UsePermission");
     if (roleType == 'role') {
-
-
-
-        
-
     
     }
     return roleObject;
-   
 }
 
 
