@@ -211,10 +211,6 @@ export const usePermission: useRoleProps = (permissions, roleType) => {
     const roleObject = new RolePermissions(permissions)
     if (roleType == 'role') {
 
-
-
-        
-
     
     }
     return roleObject;
