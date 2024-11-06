@@ -1,6 +1,6 @@
 "use server"
 
-import { usePermission } from '@/app/hooks/usePermission';
+import { UsePermission } from '@/app/hooks/UsePermission';
 import {serversideUsePrisma} from '@/app/hooks/serversideUsePrisma'
 import { PrismaClient, Role } from '@prisma/client';
 import { redirect } from 'next/navigation';
@@ -30,7 +30,7 @@ const RoleRow = (props: RoleRowProps) => {
   );
 };
 
-export default async function roles() {
+export default async function Roles() {
   const prisma = new PrismaClient();
   if(!prisma )
     return
@@ -62,10 +62,10 @@ export default async function roles() {
                 },
               });
 
-              redirect("/admin/roles");
+              redirect("/");
             }} className="flex flex-row flex-wrap gap-2 text-xs">
               <div className="flex flex-row gap-1">
-                {usePermission(role.permissions, 'role').getRolePermissions().map(perm => (
+                {UsePermission(role.permissions, 'role').getRolePermissions().map(perm => (
                   <RoleRow key={perm.permId} name='roleId' enabled={perm.isEnabled} value={[role.id.toString(), (perm.permId ^ role.permissions).toString()]} role={role} perms={perm.permId ^ role.permissions}>
                     {perm.displayName.toString()}
                   </RoleRow>
