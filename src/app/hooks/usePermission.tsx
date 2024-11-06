@@ -212,10 +212,6 @@ export const UsePermission: useRoleProps = (permissions, roleType) => {
     if(!roleObject)
         throw new Error("Failed to initialize UsePermission");
     if (roleType == 'role') {
-<<<<<<< HEAD
-
-=======
->>>>>>> 2f08c8f56825d633051fe26c08a102812c4dea74
     
     }
     return roleObject;
