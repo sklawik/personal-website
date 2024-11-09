@@ -7,8 +7,9 @@ type UrlObject = {
   name: string;
 };
 
-export default function layout(props: PropsWithChildren) {
-  const url = headers().get("referer");
+export default async function layout(props: PropsWithChildren) {
+  const headerObj = await headers() 
+  const url = headerObj.get("referer");
   const pathSplitted = url?.split("/");
   const partOfURL = pathSplitted?.at(pathSplitted.length - 1);
 
