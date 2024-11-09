@@ -1,9 +1,10 @@
 import React from "react";
 import Form from "next/form"; // Poprawiony import
 import { UsePermission } from "../hooks/usePermission";
+import Roles from "../admin/roles/page";
 
 // Funkcja asynchroniczna, która pobiera dane z searchParams
-const Page = async ({ searchParams }: { searchParams: Promise<Record<string, string>> }) => {
+const page = async ({ searchParams }: { searchParams: Promise<Record<string, string>> }) => {
   // Czekamy na rozstrzygnięcie Promise
   const resolvedParams = await searchParams;
 
@@ -33,7 +34,7 @@ const Page = async ({ searchParams }: { searchParams: Promise<Record<string, str
             <section>
               Wszyscy{" "}
               <input
-                className="bg-transparent text-green-200"
+                className="bg-transparent text-white"
                 defaultValue="Everyone"
               ></input>
             </section>
@@ -47,7 +48,7 @@ const Page = async ({ searchParams }: { searchParams: Promise<Record<string, str
             <section>
               Superuser{" "}
               <input
-                className="bg-transparent text-green-200"
+                className="bg-transparent text-green-500"
                 defaultValue="Superuser"
               ></input>
             </section>
@@ -63,4 +64,4 @@ const Page = async ({ searchParams }: { searchParams: Promise<Record<string, str
   );
 };
 
-export default Page;
+export default page;

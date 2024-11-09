@@ -1,7 +1,7 @@
 "use server"
 
 import { UsePermission } from '@/app/hooks/usePermission';
-import {serversideUsePrisma} from '@/app/hooks/serversideUsePrisma'
+import {getPrisma } from '@/app/hooks/getPrisma'
 import { PrismaClient, Role } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React, { ReactNode } from 'react';
@@ -55,7 +55,7 @@ export default async function Roles() {
               const roleId = dataSplitted?.at(0);
               const perms: number = Number(dataSplitted?.at(1));
               if (!roleId) return;
-              const prisma = serversideUsePrisma()
+              const prisma = getPrisma()
               await prisma?.role.update({
                 data: {
                   permissions: perms,
@@ -83,7 +83,7 @@ export default async function Roles() {
 
             <form action={async () => {
               "use server";
-              const prisma = serversideUsePrisma()
+              const prisma = getPrisma()
               await prisma?.role.delete({ where: { id: role.id } });
               redirect('/admin/roles');
             }}>
@@ -103,7 +103,7 @@ export default async function Roles() {
 
         if (!roleName || !roleHexColor || isNaN(rolePerms)) return;
 
-        const prisma = serversideUsePrisma();
+        const prisma = getPrisma();
         await prisma?.role.create({
           data: {
             hexColor: roleHexColor as string,

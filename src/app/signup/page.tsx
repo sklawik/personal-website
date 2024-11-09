@@ -1,5 +1,5 @@
 import React from "react";
-import { serversideUsePrisma } from "../hooks/serversideUsePrisma";
+import { getPrisma } from "../hooks/getPrisma";
 // import { cookies } from "next/headers";
 // import { SignJWT } from "jose";
 
@@ -18,7 +18,7 @@ export default function page() {
         if(!_login)
             return
 
-            const prisma = serversideUsePrisma()
+            const prisma = getPrisma()
             await prisma?.user.create({data:{
                 password: _password,
                 email: _login

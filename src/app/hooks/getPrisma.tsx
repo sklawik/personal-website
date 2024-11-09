@@ -5,7 +5,7 @@ type PrismaHandlerProps = null | PrismaClient
 
 let prisma: PrismaHandlerProps = null 
 
-export const serversideUsePrisma = function (){
+export const getPrisma = function (){
    
     if(prisma == null){
         

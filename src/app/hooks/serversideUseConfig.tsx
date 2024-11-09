@@ -1,5 +1,5 @@
 
-import { serversideUsePrisma  } from "./serversideUsePrisma";
+import { getPrisma  } from "./getPrisma";
 import GlobalConfig from '@/app/app.config.js'
 
 class ServerConfig {
@@ -21,7 +21,7 @@ class ServerConfig {
   }
 
   set isServiceAccessible(isAccessible: boolean) {
-    const prisma = serversideUsePrisma();
+    const prisma = getPrisma();
 
     if (prisma) {
       (async () => {
@@ -45,7 +45,7 @@ class ServerConfig {
   }
 
   async fetchDataFromDatabase() {
-    const prisma = serversideUsePrisma();
+    const prisma = getPrisma();
     const data = await prisma?.serviceConfig.findFirst({});
     if (!data) {
       await prisma?.serviceConfig.create({
