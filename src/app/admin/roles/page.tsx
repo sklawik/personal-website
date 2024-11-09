@@ -6,6 +6,7 @@ import { PrismaClient, Role } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React, { ReactNode } from 'react';
 
+
 type RoleRowProps = {
   name: string;
   key: number;
@@ -14,7 +15,9 @@ type RoleRowProps = {
   role: Role;
   perms: number;
   children: ReactNode;
-};
+}
+
+
 
 const RoleRow = (props: RoleRowProps) => {
  
