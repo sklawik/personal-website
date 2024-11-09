@@ -83,7 +83,7 @@ export default async function RootLayout({
           children : 
           <ServiceOffline />
         }
-        <Footer></Footer>
+     
       </body>
     </html>
   );
