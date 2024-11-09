@@ -1,6 +1,6 @@
 "use server"
 
-import { UsePermission } from '@/app/hooks/UsePermission';
+import { UsePermission } from '@/app/hooks/usePermission';
 import {serversideUsePrisma} from '@/app/hooks/serversideUsePrisma'
 import { PrismaClient, Role } from '@prisma/client';
 import { redirect } from 'next/navigation';
