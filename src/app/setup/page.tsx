@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "next/form"; // Poprawiony import
-import { UsePermission } from "../hooks/UsePermission";
+import { UsePermission } from "../hooks/usePermission";
 
 // Funkcja asynchroniczna, która pobiera dane z searchParams
 const Page = async ({ searchParams }: { searchParams: Promise<Record<string, string>> }) => {
