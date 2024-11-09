@@ -1,7 +1,7 @@
 import React from "react";
 
 import Form from "next/form";
-import { UsePermission } from "../hooks/usePermission";
+import { UsePermission } from "../hooks/UsePermission";
 
 interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -50,7 +50,7 @@ export default function page(props: PageProps) {
 
             </section>
             <section className="flex flex-row gap-1 text-xs">
-            {roles.map(role => <div key={role.permId}>{role.displayName.toString()}</div>)}
+            {roles.map( role=> <div key={role.permId}>{role.displayName.toString()}</div>)}
               </section>
         
          
