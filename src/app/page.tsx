@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export default async function Home() {
 
   return (
-    <div className="flex flex-col font-[family-name:var(--font-geist-sans)] justify-center items-center ml-96 mr-96">
+    <div className="dark:bg-slate-800 flex flex-col font-[family-name:var(--font-geist-sans)] justify-center items-center ml-96 mr-96">
       {/* <Header /> */}
 
       <div className="flex flex-col flex-grow w-full h-svh ">

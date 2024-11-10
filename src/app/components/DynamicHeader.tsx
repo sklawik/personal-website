@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import AnimateLetters from "./ui/animations/AnimateLetters";
+import { useTheme } from "@/app/store";
 
 export default function DynamicHeader() {
   const floatingObj: Variant = {
@@ -51,7 +52,8 @@ export default function DynamicHeader() {
     floating: floatingObj,
     floatingExpanded: {
       ...floatingObj,
-      height: "12rem",
+      height: "auto",
+      minHeight: "8rem",
       backgroundColor: "black",
       width: "24rem",
       marginLeft: "40%",
@@ -84,6 +86,7 @@ export default function DynamicHeader() {
 
   let { scrollY } = useViewportScroll();
 
+
   scrollY.on("change", (lastValue) => {
     if (lastValue >= 10) {
       setCurrentVariant("floating");
@@ -91,6 +94,11 @@ export default function DynamicHeader() {
       setCurrentVariant("static");
     }
   });
+
+
+  let theme = useTheme()
+
+
 
   return (
     hidden || (
@@ -107,7 +115,7 @@ export default function DynamicHeader() {
         onHoverEnd={() => {
           if (currentVariant == "floatingExpanded") {
             setCurrentVariant("floating");
-            setSelectedOption('none')
+            setSelectedOption("none");
           }
           setIsCursorOnNavbar(false);
         }}
@@ -183,16 +191,18 @@ export default function DynamicHeader() {
           </div>
         </div>
         <div className="p-1 h-full flex flex-col">
-          {selectedOption == "settings" &&
-           <div className="flex flex-row gap-1">
-            
-                <div className="bg-white flex flex-row text-slate-800 text-sm px-4 py-0.5 rounded-md text-nowrap w-auto">
-                  <AnimateLetters letters="Zmień_motyw">
-                    </AnimateLetters>  
-                    </div>
-            
-          
-            </div>}
+          {selectedOption == "settings" && (
+            <div className="flex flex-row gap-1">
+              <div 
+              onClick={e=>{
+                    theme.setTheme();
+                    console.log(theme.darkmode)
+              }}
+              className="bg-white flex flex-row text-slate-800 text-sm px-4 py-0.5 rounded-md text-nowrap w-auto">
+                <AnimateLetters letters="Zmień_motyw"></AnimateLetters>
+              </div>
+            </div>
+          )}
         </div>
       </motion.div>
     )

@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import ServiceOffline from "./serviceOffline/page";
 import { getPrisma } from "./hooks/getPrisma";
 import Header from "./components/ui/Header";
+import ClientSideWrapper from "./components/ui/ClientSideWrapper";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,61 +30,43 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
-
   const prisma = getPrisma();
-  const data = await prisma?.serviceConfig.findFirst()
-  if(!data){
+  const data = await prisma?.serviceConfig.findFirst();
+  if (!data) {
     await prisma?.serviceConfig.create({
-      data:
-      {
-        isServiceAccessible: true
-      }
-    })
+      data: {
+        isServiceAccessible: true,
+      },
+    });
     await prisma?.role.createMany({
       data: [
-        {  name: 'Everyone',
-          hexColor: '#ffffff',
-          permissions: 0,
-          
-        },
-        {  name: 'Superuser',
-          hexColor: '#ff0000',
-          permissions: 255,
-        }
-      ]
-    })
+        { name: "Everyone", hexColor: "#ffffff", permissions: 0 },
+        { name: "Superuser", hexColor: "#ff0000", permissions: 255 },
+      ],
+    });
     await prisma?.user.create({
-      data:{
+      data: {
         displayName: "Administrator",
         email: "admin@localhost",
-        password: ""
-      }
-    })
+        password: "",
+      },
+    });
 
-    
-    const JWT_SECRET = process.env.JWT_SECRET
+    const JWT_SECRET = process.env.JWT_SECRET;
     let cookieToSet = "";
-    const secret = new TextEncoder().encode(JWT_SECRET)
-    
-
-
+    const secret = new TextEncoder().encode(JWT_SECRET);
   }
   const isServiceOnline = data?.isServiceAccessible;
-
-
 
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-svh h-svh`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased  max-h-svh h-svh`}
       >
-        <DynamicHeader />
-        {isServiceOnline?
-          children : 
-          <ServiceOffline />
-        }
-     
+        <ClientSideWrapper>
+          <DynamicHeader />
+          {isServiceOnline ? children : <ServiceOffline />}
+        </ClientSideWrapper>
       </body>
     </html>
   );
