@@ -8,11 +8,12 @@ import {
   easeInOut,
   easeIn,
 } from "framer-motion";
+
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import AnimateLetters from "./ui/animations/AnimateLetters";
 import { useTheme } from "@/app/store";
-
+import { Moon } from 'lucide-react';
 export default function DynamicHeader() {
   const floatingObj: Variant = {
     position: "fixed",
@@ -196,10 +197,11 @@ export default function DynamicHeader() {
               <div 
               onClick={e=>{
                     theme.setTheme();
-                    console.log(theme.darkmode)
+                  
               }}
-              className="bg-white flex flex-row text-slate-800 text-sm px-4 py-0.5 rounded-md text-nowrap w-auto">
-                <AnimateLetters letters="Zmień_motyw"></AnimateLetters>
+              className="bg-white flex gap-2 dark:bg-black border-2 border-slate-200 dark:border-gray-600 dark:hover:bg-gray-900 cursor-pointer hover:bg-slate-200 dark:text-white flex-row text-slate-800 text-sm px-4 py-0.5 rounded-md text-nowrap w-auto">
+                <div><AnimateLetters letters="Zmień_motyw"></AnimateLetters></div>
+                <div><Moon /></div>
               </div>
             </div>
           )}
