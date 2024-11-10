@@ -7,7 +7,7 @@ type AnimateLettersProps = {
     letters: string
 }
 
-export default function AnimateLetters(props: AnimateLettersProps) {
+export default function AnimateLetters( props: AnimateLettersProps) {
 
     const letters: string[] = []
 
@@ -19,9 +19,9 @@ export default function AnimateLetters(props: AnimateLettersProps) {
 
 
     return (
-        <AnimatePresence>
+        <AnimatePresence >
             {letters.map((letter, index) =>
-                <motion.div key={index}
+                <motion.div className="" key={index}
                     initial={{
                         y: -5,
                         opacity: 0,
