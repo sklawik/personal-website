@@ -13,7 +13,8 @@ import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import AnimateLetters from "./ui/animations/AnimateLetters";
 import { useTheme } from "@/app/store";
-import { Moon } from 'lucide-react';
+import { Moon, SunMoon } from "lucide-react";
+import AuthForm from "./AuthForm";
 export default function DynamicHeader() {
   const floatingObj: Variant = {
     position: "fixed",
@@ -87,7 +88,6 @@ export default function DynamicHeader() {
 
   let { scrollY } = useViewportScroll();
 
-
   scrollY.on("change", (lastValue) => {
     if (lastValue >= 10) {
       setCurrentVariant("floating");
@@ -96,10 +96,7 @@ export default function DynamicHeader() {
     }
   });
 
-
-  let theme = useTheme()
-
-
+  let theme = useTheme();
 
   return (
     hidden || (
@@ -191,21 +188,30 @@ export default function DynamicHeader() {
             </svg>
           </div>
         </div>
-        <div className="p-1 h-full flex flex-col">
+        {currentVariant == 'floatingExpanded' &&  <div className="p-1 h-full flex flex-col">
+          {selectedOption == "none" && 
+          <div>
+              <AuthForm/>
+            </div>}
           {selectedOption == "settings" && (
             <div className="flex flex-row gap-1">
-              <div 
-              onClick={e=>{
-                    theme.setTheme();
-                  
-              }}
-              className="bg-white flex gap-2 dark:bg-black border-2 border-slate-200 dark:border-gray-600 dark:hover:bg-gray-900 cursor-pointer hover:bg-slate-200 dark:text-white flex-row text-slate-800 text-sm px-4 py-0.5 rounded-md text-nowrap w-auto">
-                <div><AnimateLetters letters="Zmień_motyw"></AnimateLetters></div>
-                <div><Moon /></div>
+              <div
+                onClick={(e) => {
+                  theme.setTheme();
+                }}
+                className="bg-white flex gap-2 dark:bg-black border-2 border-slate-200 dark:border-gray-900 dark:hover:bg-gray-900 cursor-pointer hover:bg-slate-200 dark:text-white flex-row text-slate-800 text-sm px-4 py-0.5 rounded-md text-nowrap w-auto"
+              >
+                <div className="flex flex-row">
+                  <AnimateLetters letters="Zmień_motyw"></AnimateLetters>
+                </div>
+                <div className="justify-center items-center flex flex-row">
+                  {theme.darkmode ? <Moon size="16" /> : <SunMoon size="16" />}
+                </div>
               </div>
             </div>
           )}
-        </div>
+        </div>}
+       
       </motion.div>
     )
   );

@@ -15,10 +15,10 @@ export default async function Home() {
       <div className="flex flex-col flex-grow w-full h-svh ">
         <section className="flex flex-col flex-grow justify-center items-center">
           <div className="p-2 w-full h-screen flex flex-row justify-center items-center">
-          
+         
           </div>
-          <div className="p-2 w-full h-screen">
-          
+          <div className="p-2 w-full h-screen dark:bg-zinc-900">
+          kkk
           </div>
         </section>
       </div>
