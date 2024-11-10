@@ -124,39 +124,48 @@ export default function DynamicHeader() {
                     <div>
                         {" "}
                         {currentVariant != "floatingExpanded" ? (
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="lucide lucide-lock-keyhole"
-                            >
-                                <circle cx="12" cy="16" r="1" />
-                                <rect x="3" y="10" width="18" height="12" rx="2" />
-                                <path d="M7 10V7a5 5 0 0 1 10 0v3" />
-                            </svg>
+                            <div className="flex flex-row gap-1">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="lucide lucide-lock-keyhole"
+                                >
+                                    <circle cx="12" cy="16" r="1" />
+                                    <rect x="3" y="10" width="18" height="12" rx="2" />
+                                    <path d="M7 10V7a5 5 0 0 1 10 0v3" />
+                                </svg>
+
+                            </div>
+
+
                         ) : (
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="lucide lucide-lock-keyhole-open select-none"
-                            >
-                                <circle cx="12" cy="16" r="1" />
-                                <rect width="18" height="12" x="3" y="10" rx="2" />
-                                <path d="M7 10V7a5 5 0 0 1 9.33-2.5" />
-                            </svg>
+                            <div className="flex flex-row gap-4 justify-center items-center">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="lucide lucide-lock-keyhole-open select-none"
+                                >
+                                    <circle cx="12" cy="16" r="1" />
+                                    <rect width="18" height="12" x="3" y="10" rx="2" />
+                                    <path d="M7 10V7a5 5 0 0 1 9.33-2.5" />
+                                </svg>
+
+                            </div>
+
                         )}
                     </div>
                     <div
@@ -193,12 +202,18 @@ export default function DynamicHeader() {
                     {selectedOption == "none" &&
                         <div className="flex flex-col gap-2 w-full   flex-grow">
                             <AuthForm />
-                            <div className="flex flex-row text-wrap text-xs w-full items-end justify-end">
-                               <div className="cursor-pointer hover:bg-slate-200 hover:text-black p-0.5 rounded-md duration-500"><LogIn /></div>
+                            <div className="flex flex-row text-wrap text-xs w-full items-end justify-between">
+                                <div className="flex flex-row gap-2  transition-all p-0.5">
+                                    <div className="text-xl cursor-pointer peer ">?</div>
+                                    <div className="opacity-0 peer-hover:opacity-100 relative duration-500">Jeśli nie masz konta, wystarczy że wprowadzisz dane tak jakby tworzyć nowe.</div>
+                                </div>
+
+                                <div className="cursor-pointer hover:bg-slate-200 hover:text-black p-0.5 rounded-md duration-500"><LogIn /></div>
                                 {/* +1000 aktywnych użytkowniów w tym momencie */}
-                              {/* +5 użytkowników było online w ostatnich 30 minutach
+                                {/* +5 użytkowników było online w ostatnich 30 minutach
                               <a href="/online">Zobacz kto</a> */}
                             </div>
+
                         </div>}
                     {selectedOption == "settings" && (
                         <div className="flex flex-row gap-1">
