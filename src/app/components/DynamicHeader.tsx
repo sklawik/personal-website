@@ -26,6 +26,8 @@ export default function DynamicHeader() {
             y: 0,
             position: "fixed",
             width: "100%",
+            minHeight: '2.5rem',
+            height: 'auto',
             backgroundColor: 'black',
            padding: '0.5rem',
             color: 'white',
@@ -40,7 +42,7 @@ export default function DynamicHeader() {
         floating: floatingObj,
         floatingExpanded: {
             ...floatingObj,
-            height: "10rem",
+            height: "12rem",
             backgroundColor: 'black',
             width: "10rem",
             transition: {
