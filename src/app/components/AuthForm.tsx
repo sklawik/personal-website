@@ -3,48 +3,27 @@
 import { motion } from 'framer-motion'
 import Form from 'next/form'
 import React from 'react'
+import FadeIn from './ui/animations/FadeIn'
 
 export default function AuthForm() {
   return (
- <div>
-    <Form 
-    className="flex flex-col gap-1 [&_input]:bg-black select-none [&_input]:outline-none justify-center items-center rounded-xl bg-black"
-    action={e=>{
 
-    }}>
-      <motion.input
-        initial={{
-          x: -100,
-          opacity: 0
-        }}
-        animate={{
-          x: 0,
-          opacity: 1
-        }}
-        transition={{
-          duration: 0.5
+      <Form
+        className="flex flex-col gap-1 p-2
+        text-slate-900 w-full select-none justify-center items-start rounded-xl bg-black flex-grow 
+        [&_input]:outline-none [&_input]:w-full [&_input]:bg-slate-100 [&_input]:rounded-md [&_input]:placeholder-slate-500 [&_input]:p-0.5 " 
+        action={e => {
+            console.log("test");
+        }}>
 
-        }}
-      placeholder='login'></motion.input>
-      <motion.input 
-      initial={{
-        x: -100,
-        opacity: 0
-      }}
-      animate={{
-        x: 0,
-        opacity: 1
-      }}
-      transition={{
-        duration: 0.5
+ 
+          <input className="" placeholder='adres e-mail' />
+      
+     
+          <input className="" placeholder="hasło do konta"/>
+      
 
-      }}
-      placeholder='password'></motion.input>
-        <div>
+      </Form>
 
-        </div>
-        
-    </Form>
- </div>
   )
 }
