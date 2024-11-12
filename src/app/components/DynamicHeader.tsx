@@ -17,10 +17,13 @@ import { LogIn, Moon, SunMoon } from "lucide-react";
 import AuthForm from "./AuthForm";
 import Button from "./ui/Button";
 export default function DynamicHeader() {
+
+    const isMobile = window.innerWidth < 768
+
     const floatingObj: Variant = {
         position: "fixed",
         margin: "0.5rem",
-        marginLeft: "45%",
+        marginLeft: isMobile? "35%": "45%",
         marginRight: "45%",
         alignItems: "center",
         justifyContent: "center",
@@ -58,13 +61,14 @@ export default function DynamicHeader() {
             height: "auto",
             minHeight: "8rem",
             backgroundColor: "black",
-            width: "24rem",
-            marginLeft: "40%",
-            marginRight: "40%",
+            width: isMobile ? "95%" : "12rem" ,
+            
             transition: {
                 duration: 0.25,
                 ease: "easeInOut",
             },
+            marginLeft: isMobile ? "2%" : "40%",
+            marginRight: isMobile ? "2%" : "40%",
         },
         floatingFullscreen: {
             width: "100%",
