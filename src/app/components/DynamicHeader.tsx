@@ -16,9 +16,14 @@ import { useTheme } from "@/app/store";
 import { LogIn, Moon, SunMoon } from "lucide-react";
 import AuthForm from "./AuthForm";
 import Button from "./ui/Button";
+import dynamic from "next/dynamic";
 export default function DynamicHeader() {
 
-    const isMobile = window.innerWidth < 768
+
+
+    const isMobile = (typeof window !== 'undefined') &&  window.innerWidth < 700 
+
+
 
     const floatingObj: Variant = {
         position: "fixed",
@@ -61,7 +66,7 @@ export default function DynamicHeader() {
             height: "auto",
             minHeight: "8rem",
             backgroundColor: "black",
-            width: isMobile ? "95%" : "12rem" ,
+            width: isMobile ? "95%" : "24rem" ,
             
             transition: {
                 duration: 0.25,
