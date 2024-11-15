@@ -7,6 +7,7 @@ import {
     Variant,
     easeInOut,
     easeIn,
+    useScroll,
 } from "framer-motion";
 
 import React, { useState } from "react";
@@ -28,8 +29,10 @@ export default function DynamicHeader() {
     const floatingObj: Variant = {
         position: "fixed",
         margin: "0.5rem",
-        marginLeft: isMobile? "35%": "45%",
-        marginRight: "45%",
+        // marginLeft: isMobile? "35%": "50%",
+        translateX: '50vw',
+        transformOrigin: 'center',
+        // marginRight: "45%",
         alignItems: "center",
         justifyContent: "center",
         userSelect: "none",
@@ -37,19 +40,27 @@ export default function DynamicHeader() {
             duration: 0.5,
             ease: "easeInOut",
         },
-        width: "10rem",
+        width: '12rem',
+        minWidth: '8rem',
         marginTop: "1rem",
         borderRadius: "1rem",
+
     };
 
     const headerVariants: Variants = {
         static: {
-            x: 0,
-            y: 0,
+            width: '100vw',
+            maxWidth: '100%',
+            height: "2.5rem",
+            transformOrigin: 'center',
+            translateX: 0,
+            translateY: 0,
+            originX: 0,
+            originY: 0,
+            
             position: "fixed",
-            width: "100%",
-            minHeight: "2.5rem",
-            height: "auto",
+       
+           
             backgroundColor: "black",
             padding: "0.5rem",
             color: "white",
@@ -59,25 +70,27 @@ export default function DynamicHeader() {
                 ease: easeIn,
                 duration: 0.25,
             },
+            
         },
         floating: floatingObj,
         floatingExpanded: {
             ...floatingObj,
-            height: "auto",
-            minHeight: "8rem",
+           
             backgroundColor: "black",
-            width: isMobile ? "95%" : "24rem" ,
-            
+            // translateX: isMobile ? "95%" : "20rem" ,
             transition: {
                 duration: 0.25,
                 ease: "easeInOut",
             },
-            marginLeft: isMobile ? "2%" : "40%",
-            marginRight: isMobile ? "2%" : "40%",
+            width: '20rem',
+            height: '12rem',
+            
+            // marginLeft: isMobile ? "2%" : "0%",
+            // marginRight: isMobile ? "2%" : "0%",
         },
         floatingFullscreen: {
-            width: "100%",
-            height: "100%",
+            translateX: "100%",
+            translateY: "100%",
         },
     };
 
@@ -96,7 +109,7 @@ export default function DynamicHeader() {
         }
     }
 
-    let { scrollY } = useViewportScroll();
+    let { scrollY } = useScroll();
 
     scrollY.on("change", (lastValue) => {
         if (lastValue >= 10) {
@@ -111,9 +124,7 @@ export default function DynamicHeader() {
     return (
         hidden || (
             <motion.div
-                style={{
-                    userSelect: "none",
-                }}
+                
                 variants={headerVariants}
                 initial="static"
                 animate={currentVariant}
@@ -209,15 +220,15 @@ export default function DynamicHeader() {
                 </div>
                 {currentVariant == 'floatingExpanded' && <div className="p-1 h-full flex flex-col">
                     {selectedOption == "none" &&
-                        <div className="flex flex-col gap-2 w-full   flex-grow">
+                        <div className="flex flex-col gap-1 w-full flex-grow">
                             <AuthForm />
-                            <div className="flex flex-row text-wrap text-xs w-full items-end justify-between">
-                                <div className="flex flex-row gap-2  transition-all p-0.5">
+                            <div className="flex flex-row text-wrap text-xs items-end justify-between">
+                                <div className="flex flex-row flex-grow gap-1 transition-all p-0.5">
                                     <div className="text-xl cursor-pointer peer ">?</div>
                                     <div className="opacity-0 peer-hover:opacity-100 relative duration-500">Jeśli nie masz konta, wystarczy że wprowadzisz dane tak jakby tworzyć nowe.</div>
                                 </div>
 
-                                <div className="cursor-pointer hover:bg-slate-200 hover:text-black p-0.5 rounded-md duration-500"><LogIn /></div>
+                                <div className="cursor-pointer flex-grow hover:bg-slate-200 hover:text-black p-0.5 rounded-md duration-500"><LogIn /></div>
                                 {/* +1000 aktywnych użytkowniów w tym momencie */}
                                 {/* +5 użytkowników było online w ostatnich 30 minutach
                               <a href="/online">Zobacz kto</a> */}
