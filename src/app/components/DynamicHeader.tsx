@@ -30,7 +30,7 @@ export default function DynamicHeader() {
         position: "fixed",
     
         // marginLeft: isMobile? "35%": "50%",
-        translateX: isMobile ?  '42vw' : '45vw',
+        translateX: isMobile ?  '43vw' : '45vw',
         transformOrigin: 'center',
         // marginRight: "45%",
         alignItems: "center",
@@ -42,7 +42,7 @@ export default function DynamicHeader() {
         },
         width: isMobile ? '2rem' : '10rem',
         minWidth: '8rem',
-        marginTop: "1rem",
+        marginTop: isMobile ?  "4rem" : '1rem',
         borderRadius: "1rem",
 
     };
@@ -82,9 +82,10 @@ export default function DynamicHeader() {
                 duration: 0.25,
                 ease: "easeInOut",
             },
-            width: '20rem',
+            width: isMobile ? '100%' : '20rem',
+           
             height: '10rem',
-            translateX: isMobile ? '20vw' : '42vw',
+            translateX: isMobile ? '0vw' : '42vw',
             // marginLeft: isMobile ? "2%" : "0%",
             // marginRight: isMobile ? "2%" : "0%",
         },
