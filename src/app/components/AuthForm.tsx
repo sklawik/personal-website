@@ -14,7 +14,8 @@ export default function AuthForm() {
         className="flex flex-col gap-1 p-1 
         text-slate-200 w-full select-none justify-center items-start  bg-black flex-grow 
         [&_input]:outline-none [&_input]:w-full [&_input]:bg-gray-950 [&_input]:rounded-md [&_input]:placeholder-gray-400 [&_input]:p-0.5 " 
-        action={e => {
+        action={ e => {
+        
             console.log("test");
         }}>
 
@@ -23,7 +24,7 @@ export default function AuthForm() {
          <input className="" placeholder='adres e-mail' />
     
           <input className="" placeholder="hasło do konta"/>
-
+        
   
       
       

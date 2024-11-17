@@ -43,7 +43,7 @@ export default function DynamicHeader() {
         },
         width: isMobile ? '2rem' : '10rem',
         minWidth: '8rem',
-        marginTop: isMobile  ?  "2rem"  : '1rem',
+        marginTop: isMobile  ?   "calc(1rem + env(safe-area-inset-top, 0px))"  : '1rem',
         borderRadius: "1rem",
 
     };
