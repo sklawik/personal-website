@@ -18,6 +18,7 @@ import { LogIn, Moon, SunMoon } from "lucide-react";
 import AuthForm from "./AuthForm";
 import Button from "./ui/Button";
 import dynamic from "next/dynamic";
+
 export default function DynamicHeader() {
 
 
@@ -30,7 +31,7 @@ export default function DynamicHeader() {
         position: "fixed",
     
         // marginLeft: isMobile? "35%": "50%",
-        translateX: isMobile ?  '43vw' : '45vw',
+        translateX: isMobile ?  '43svw' : '45vw',
         transformOrigin: 'center',
         // marginRight: "45%",
         alignItems: "center",
@@ -42,14 +43,14 @@ export default function DynamicHeader() {
         },
         width: isMobile ? '2rem' : '10rem',
         minWidth: '8rem',
-        marginTop: isMobile ?  "4rem" : '1rem',
+        marginTop: isMobile  ?  "2rem"  : '1rem',
         borderRadius: "1rem",
 
     };
 
     const headerVariants: Variants = {
         static: {
-            width: '100vw',
+            width: '100svw',
             maxWidth: '100%',
             height: "2.5rem",
             transformOrigin: 'center',
@@ -82,7 +83,7 @@ export default function DynamicHeader() {
                 duration: 0.25,
                 ease: "easeInOut",
             },
-            width: isMobile ? '100%' : '20rem',
+            width: isMobile ? '100svw' : '20rem',
            
             height: '10rem',
             translateX: isMobile ? '0vw' : '42vw',
