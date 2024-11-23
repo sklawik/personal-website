@@ -5,8 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-   binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]  // Add this line
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"] // Add this line
 }
 
 datasource db {
@@ -14,27 +14,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
 model ServiceConfig {
-  id              BigInt  @id @unique @default(autoincrement())
+  id                  BigInt  @id @unique @default(autoincrement())
   isServiceAccessible Boolean @default(false)
 }
 
 model Post {
-  id      BigInt @id @unique @default(autoincrement())
-  content String
+  id               BigInt             @id @unique @default(autoincrement())
+  content          String
+  PostPermsForRole PostPermsForRole[]
+}
+
+model User {
+  id          BigInt  @id @default(autoincrement())
+  password    String
+  email       String  @unique
+  displayName String?
+  roles       Role[]
 }
 
 model Role {
-  id          BigInt @id @unique @default(autoincrement())
-  name        String
-  hexColor    String
-  permissions Int    @default(0)
+  id                BigInt             @id @unique @default(autoincrement())
+  name              String
+  hexColor          String
+  globalPermissions Int                @default(0) // we have global permissions for various things on websites not only specific role
+  PostPermsForRole  PostPermsForRole[] // we have role for each permission
+  user              User[]
+}
+
+model PostPermsForRole {
+  postId BigInt @unique
+  roleId BigInt @unique
+  role   Role   @relation(fields: [roleId], references: [id])
+  post   Post   @relation(fields: [postId], references: [id])
 }
 
 // unlogged 
-
 // 1 - can comment posts
 // 2 - can create new posts
 // 4 - can react with custom emojis (user can upload their own reaction while reacting to post)
@@ -44,10 +59,3 @@ model Role {
 // 64 - can do something else
 // 128 - can do something else aswell
 // 255 - means superuser (can access admin dashboard)
-
-model User {
-  id       BigInt @id @default(autoincrement())
-  password String
-  email String @unique
-  displayName String?
-}
