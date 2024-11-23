@@ -18,6 +18,7 @@ import { LogIn, Moon, SunMoon } from "lucide-react";
 import AuthForm from "./AuthForm";
 import Button from "./ui/Button";
 import dynamic from "next/dynamic";
+
 export default function DynamicHeader() {
 
 
@@ -28,9 +29,9 @@ export default function DynamicHeader() {
 
     const floatingObj: Variant = {
         position: "fixed",
-        margin: "0.5rem",
+    
         // marginLeft: isMobile? "35%": "50%",
-        translateX: '50vw',
+        translateX: isMobile ?  '43svw' : '45vw',
         transformOrigin: 'center',
         // marginRight: "45%",
         alignItems: "center",
@@ -40,16 +41,16 @@ export default function DynamicHeader() {
             duration: 0.5,
             ease: "easeInOut",
         },
-        width: '12rem',
+        width: isMobile ? '2rem' : '10rem',
         minWidth: '8rem',
-        marginTop: "1rem",
+        marginTop: isMobile  ?   "calc(1rem + env(safe-area-inset-top, 0px))"  : '1rem',
         borderRadius: "1rem",
 
     };
 
     const headerVariants: Variants = {
         static: {
-            width: '100vw',
+            width: '100svw',
             maxWidth: '100%',
             height: "2.5rem",
             transformOrigin: 'center',
@@ -82,9 +83,10 @@ export default function DynamicHeader() {
                 duration: 0.25,
                 ease: "easeInOut",
             },
-            width: '20rem',
-            height: '12rem',
-            
+            width: isMobile ? '100svw' : '20rem',
+           
+            height: '10rem',
+            translateX: isMobile ? '0vw' : '42vw',
             // marginLeft: isMobile ? "2%" : "0%",
             // marginRight: isMobile ? "2%" : "0%",
         },
@@ -218,9 +220,9 @@ export default function DynamicHeader() {
                         </svg>
                     </div>
                 </div>
-                {currentVariant == 'floatingExpanded' && <div className="p-1 h-full flex flex-col">
+                {currentVariant == 'floatingExpanded' && <div className="p-1 h-auto flex flex-col">
                     {selectedOption == "none" &&
-                        <div className="flex flex-col gap-1 w-full flex-grow">
+                        <div className="flex flex-col gap-1 w-full ">
                             <AuthForm />
                             <div className="flex flex-row text-wrap text-xs items-end justify-between">
                                 <div className="flex flex-row flex-grow gap-1 transition-all p-0.5">
@@ -233,7 +235,6 @@ export default function DynamicHeader() {
                                 {/* +5 użytkowników było online w ostatnich 30 minutach
                               <a href="/online">Zobacz kto</a> */}
                             </div>
-
                         </div>}
                     {selectedOption == "settings" && (
                         <div className="flex flex-row gap-1">
