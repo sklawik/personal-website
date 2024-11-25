@@ -223,7 +223,6 @@ export default function DynamicHeader() {
                   }}
                   className="bg-transperent flex gap-2 dark:bg-slate-800 border-2 border-slate-800 dark:border-gray-900 dark:hover:bg-gray-900 cursor-pointer hover:bg-slate-800 dark:text-white flex-row text-slate-200 text-md px-2 py-2 rounded-md text-nowrap w-auto"
                 >
-                 
                   <div className="justify-center items-center flex flex-row">
                     {theme.darkmode ? (
                       <Moon size="16" />
