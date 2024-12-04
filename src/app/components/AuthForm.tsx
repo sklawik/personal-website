@@ -12,7 +12,11 @@ import { useFormState } from "react-dom";
 export default function AuthForm() {
 
   async function action(previousState: any, e: FormData){
-      let response = await SignUser('123')
+      let response = await SignUser({
+        email: "@",
+        "password": "123",
+        "repeatPassword": "123"
+      })
       if(response == null)
       return "wystapil blad"
   }

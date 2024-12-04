@@ -58,7 +58,7 @@ export default async function Roles() {
               const prisma = getPrisma()
               await prisma?.role.update({
                 data: {
-                  permissions: perms,
+                  globalPermissions: perms,
                 },
                 where: {
                   id: BigInt(roleId),
@@ -68,15 +68,15 @@ export default async function Roles() {
               redirect("/");
             }} className="flex flex-row flex-wrap gap-2 text-xs">
               <div className="flex flex-row gap-1">
-                {UsePermission(role.permissions, 'role').getRolePermissions().map(perm => (
-                  <RoleRow key={perm.permId} name='roleId' enabled={perm.isEnabled} value={[role.id.toString(), (perm.permId ^ role.permissions).toString()]} role={role} perms={perm.permId ^ role.permissions}>
+                {UsePermission(role.globalPermissions, 'role').getRolePermissions().map(perm => (
+                  <RoleRow key={perm.permId} name='roleId' enabled={perm.isEnabled} value={[role.id.toString(), (perm.permId ^ role.globalPermissions).toString()]} role={role} perms={perm.permId ^ role.globalPermissions}>
                     {perm.displayName.toString()}
                   </RoleRow>
                 ))}
               </div>
               <div className="border-l-2 b-white ml-4">
-                <button className='w-full' type='submit' name='roleId' value={[role.id.toString(), (role.permissions === 255 ? 0 : 255).toString()]}>
-                  {role.permissions === 255 ? <div className="bg-green-600 w-full px-1 rounded-sm text-white">Superuser</div> : <div className="text-slate-300">Superuser</div>}
+                <button className='w-full' type='submit' name='roleId' value={[role.id.toString(), (role.globalPermissions === 255 ? 0 : 255).toString()]}>
+                  {role.globalPermissions === 255 ? <div className="bg-green-600 w-full px-1 rounded-sm text-white">Superuser</div> : <div className="text-slate-300">Superuser</div>}
                 </button>
               </div>
             </form>
@@ -107,7 +107,7 @@ export default async function Roles() {
         await prisma?.role.create({
           data: {
             hexColor: roleHexColor as string,
-            permissions: rolePerms,
+            globalPermissions: rolePerms,
             name: roleName as string,
           },
         });
