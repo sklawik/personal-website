@@ -40,8 +40,8 @@ export default async function RootLayout({
     });
     await prisma?.role.createMany({
       data: [
-        { name: "Everyone", hexColor: "#ffffff", permissions: 0 },
-        { name: "Superuser", hexColor: "#ff0000", permissions: 255 },
+        { name: "Everyone", hexColor: "#ffffff", globalPermissions: 0 },
+        { name: "Superuser", hexColor: "#ff0000", globalPermissions: 255 },
       ],
     });
     await prisma?.user.create({
