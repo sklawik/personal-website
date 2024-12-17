@@ -44,11 +44,15 @@ export default async function page() {
                        
                     }
                
-                    await prisma?.serviceConfig.update({data: {
-                        likes: likes
-                    }, where:{
-                        id: 1
-                    }})
+                   let response =  await prisma?.serviceConfig.update({
+                        data:{
+                            likes: likes
+                        },
+                        where:{
+                            id: 1
+                        }
+                    })
+                    console.log("server: " + response?.likes)
                     redirect("/projectzombieroblox", RedirectType.push);
                 }}>
                       <button type="submit" className="p-4 bg-red-500 text-white">lajknij</button>
