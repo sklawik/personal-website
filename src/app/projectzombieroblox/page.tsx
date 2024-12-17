@@ -1,5 +1,12 @@
 import React from 'react'
 import AnimateLetters from '../components/ui/animations/AnimateLetters'
+import Form from 'next/form';
+import { redirect, RedirectType } from 'next/navigation';
+
+
+
+global.likes = 0;
+
 
 export default function page() {
 
@@ -23,6 +30,18 @@ export default function page() {
                 Dev Vlog 1
                 - dodano zombie
                 <img src="zombi.png"></img>
+                
+                {global.likes} <div className="flex flex-row gap-1"><AnimateLetters letters='lajków'></AnimateLetters></div>
+                <Form action={ async (e)=>{
+                    "use server"
+                    global.likes++
+                    redirect("/projectzombieroblox", RedirectType.push);
+                }}>
+                      <button type="submit" className="p-4 bg-red-500 text-white">lajknij</button>
+
+                </Form>
+              
+               
             </div>
             <div className="min-h-screen">
                 section 3
