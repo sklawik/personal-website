@@ -12,9 +12,8 @@ export default async function page() {
 
     let prisma = getPrisma();
     let likes: bigint | undefined |number = 0;
-   await prisma?.serviceConfig.findFirst().then((res=>{
-       likes = res?.likes;
-    }))
+   let res = await prisma?.serviceConfig.findFirst()
+    likes = res?.likes;
 
     return (
         <div className="flex flex-col w-full h-full bg-slate-100 text-black">
@@ -53,7 +52,7 @@ export default async function page() {
                         }
                     })
                     console.log("server: " + response?.likes)
-                    redirect("/projectzombieroblox", RedirectType.push);
+                    redirect("/projectzombieroblox", RedirectType.replace);
                 }}>
                       <button type="submit" className="p-4 bg-red-500 text-white">lajknij</button>
 
