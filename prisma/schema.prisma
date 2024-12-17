@@ -17,6 +17,7 @@ datasource db {
 model ServiceConfig {
   id                  BigInt  @id @unique @default(autoincrement())
   isServiceAccessible Boolean @default(false)
+  likes BigInt @default(0)
 }
 
 model Post {

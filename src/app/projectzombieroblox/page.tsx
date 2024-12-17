@@ -2,15 +2,19 @@ import React from 'react'
 import AnimateLetters from '../components/ui/animations/AnimateLetters'
 import Form from 'next/form';
 import { redirect, RedirectType } from 'next/navigation';
+import { getPrisma } from '../hooks/getPrisma';
 
 
 
-global.likes = 0;
 
 
-export default function page() {
+export default async function page() {
 
-
+    let prisma = getPrisma();
+    let likes: bigint | undefined |number = 0;
+   await prisma?.serviceConfig.findFirst().then((res=>{
+       likes = res?.likes;
+    }))
 
     return (
         <div className="flex flex-col w-full h-full bg-slate-100 text-black">
@@ -31,10 +35,20 @@ export default function page() {
                 - dodano zombie
                 <img src="zombi.png"></img>
                 
-                {global.likes} <div className="flex flex-row gap-1"><AnimateLetters letters='lajków'></AnimateLetters></div>
+                {likes}👍 <div className="flex flex-row gap-1"><AnimateLetters letters='polubień'></AnimateLetters></div>
                 <Form action={ async (e)=>{
                     "use server"
-                    global.likes++
+                    let prisma = getPrisma();
+                    if(likes != undefined){
+                        likes++;
+                       
+                    }
+               
+                    await prisma?.serviceConfig.update({data: {
+                        likes: likes
+                    }, where:{
+                        id: 1
+                    }})
                     redirect("/projectzombieroblox", RedirectType.push);
                 }}>
                       <button type="submit" className="p-4 bg-red-500 text-white">lajknij</button>
