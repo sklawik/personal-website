@@ -3,6 +3,7 @@ import AnimateLetters from '../components/ui/animations/AnimateLetters'
 import Form from 'next/form';
 import { redirect, RedirectType } from 'next/navigation';
 import { getPrisma } from '../hooks/getPrisma';
+import { headers } from 'next/headers';
 
 
 
@@ -10,10 +11,12 @@ import { getPrisma } from '../hooks/getPrisma';
 
 export default async function page() {
 
+let h= await headers()
+
     let prisma = getPrisma();
-    let likes: bigint | undefined |number = 0;
+    let theLikes: bigint | undefined |number = 0;
    let res = await prisma?.serviceConfig.findFirst()
-    likes = res?.likes;
+    theLikes = res?.likes;
 
     return (
         <div className="flex flex-col w-full h-full bg-slate-100 text-black">
@@ -34,18 +37,18 @@ export default async function page() {
                 - dodano zombie
                 <img src="zombi.png"></img>
                 
-                {likes}👍 <div className="flex flex-row gap-1"><AnimateLetters letters='polubień'></AnimateLetters></div>
+                {theLikes}👍 <div className="flex flex-row gap-1"><AnimateLetters letters='polubień'></AnimateLetters></div>
                 <Form action={ async (e)=>{
                     "use server"
                     let prisma = getPrisma();
-                    if(likes != undefined){
-                        likes++;
+                    if(theLikes != undefined){
+                        theLikes++;
                        
                     }
                
                    let response =  await prisma?.serviceConfig.update({
                         data:{
-                            likes: likes
+                            likes: theLikes
                         },
                         where:{
                             id: 1
