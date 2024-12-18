@@ -42,6 +42,8 @@ let h= await headers()
                     "use server"
                     let prisma = getPrisma();
                     if(theLikes != undefined){
+                        if(theLikes == 999)
+                            return theLikes = 0
                         theLikes++;
                        
                     }
