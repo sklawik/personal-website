@@ -55,7 +55,7 @@ let h= await headers()
                         }
                     })
                     console.log("server: " + response?.likes)
-                    redirect("/projectzombieroblox", RedirectType.replace);
+                    redirect("/projectzombieroblox", RedirectType.push);
                 }}>
                       <button type="submit" className="p-4 bg-red-500 text-white">lajknij</button>
 
