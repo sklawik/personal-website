@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { FormEvent } from 'react'
 import AnimateLetters from '../components/ui/animations/AnimateLetters'
 import Form from 'next/form';
 import { redirect, RedirectType } from 'next/navigation';
 import { getPrisma } from '../hooks/getPrisma';
 import { headers } from 'next/headers';
+import Head from 'next/head';
 
 
 let comments = [{
-    author: "",
-    message: ""
+    author: "anonymous",
+    message: "zrobil organizacje za 70zl"
 }]
 
 
@@ -25,6 +26,7 @@ export default async function page() {
 
     return (
         <div className="flex flex-col w-full h-full bg-slate-100 text-black">
+           
             <img src="johnydixon.png" className="self-start w-full max-h-96"></img>
             <div className=" min-h-fit flex flex-col justify-start items-center text-3xl">
                 <div> <h1>Czy chciałbyś przeżyć apokalipsę zombie?</h1></div>
@@ -43,8 +45,9 @@ export default async function page() {
                 <img src="zombi.png"></img>
 
                 {theLikes}👍 <div className="flex flex-row gap-1"><AnimateLetters letters='polubień'></AnimateLetters></div>
-                <Form action={async (e) => {
+                <Form  action={async (e: FormData) => {
                     "use server"
+                    
                     let prisma = getPrisma();
                     if (theLikes != undefined) {
                         if (theLikes == 999)
@@ -62,7 +65,7 @@ export default async function page() {
                         }
                     })
                     console.log("server: " + response?.likes)
-                    redirect("/projectzombieroblox", RedirectType.push);
+                    redirect("/projectzombieroblox", RedirectType.replace);
                 }}>
                     <button type="submit" className="p-4 bg-red-500 text-white">lajknij</button>
 
