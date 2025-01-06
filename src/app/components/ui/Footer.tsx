@@ -52,7 +52,12 @@ export default function Footer() {
             <div className="w-max text-slate-200">
                 <h6>Użyte technologie</h6>
             </div>
-            <div className="flex flex-row gap-4 w-full ">
+            <motion.div 
+            stag
+            animate={{
+                
+            }}
+            className="flex sm:flex-row gap-4 w-full flex-col ">
 
                 <div className="flex flex-row gap-1 justify-center items-center ">
                     <FaReact /> React
@@ -101,7 +106,7 @@ export default function Footer() {
 
                     Zustand
                 </div>
-            </div>
+            </motion.div>
             <div className="flex flex-row gap-1 text-xs mt-2 items-center">
                 Sebastian Klawikowski <AiOutlineTrademark />  2025
                 <a href="mailto:sebklawik@gmail.com" className="underline cursor-pointer hover:text-slate-200">kontakt e-mail</a>
