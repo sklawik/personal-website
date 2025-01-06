@@ -3,11 +3,11 @@
 import { motion, useInView, Variant } from 'framer-motion'
 import { UnlockKeyhole } from 'lucide-react';
 import React, { useEffect, useRef } from 'react'
-import { AiOutlineTrademark } from 'react-icons/ai';
+import { AiOutlineGlobal, AiOutlineTrademark } from 'react-icons/ai';
 import { DiMysql } from 'react-icons/di';
 import { FaCss3, FaDocker, FaHtml5, FaJs, FaReact, FaTrademark } from 'react-icons/fa';
 import { RiNextjsFill, RiTailwindCssFill } from 'react-icons/ri';
-import { SiPrisma, SiReacthookform } from 'react-icons/si';
+import { SiOvh, SiPrisma, SiReacthookform } from 'react-icons/si';
 import { VscJson } from 'react-icons/vsc';
 
 export default function Footer() {
@@ -24,7 +24,7 @@ export default function Footer() {
         padding: '2rem',
         y: '-50px',
         transition: {
-            duration: 2,
+            duration: 1,
             bounce: true
         },
         opacity: 0.25,
@@ -37,6 +37,9 @@ export default function Footer() {
         bottom: 0,
         y: 0,
         padding: '1rem',
+        transition:{
+            duration: 0.5
+        }
 
     }
 
@@ -93,11 +96,17 @@ export default function Footer() {
                     <FaDocker />
                     Docker
                 </div>
+                <div className="flex flex-row gap-1 justify-center items-center">
+                <AiOutlineGlobal />
+
+                    Zustand
+                </div>
             </div>
             <div className="flex flex-row gap-1 text-xs mt-2 items-center">
                 Sebastian Klawikowski <AiOutlineTrademark />  2025
                 <a href="mailto:sebklawik@gmail.com" className="underline cursor-pointer hover:text-slate-200">kontakt e-mail</a>
-                <a href="https://ovh.com">aplikacje zasila OVH VPS</a>
+                <a href="https://ovh.com" className="ml-auto flex flex-row gap-1 justify-center items-center">Strone hostuję przez OVH <SiOvh /> 😎
+ </a>
             </div>
 
         </motion.div>
