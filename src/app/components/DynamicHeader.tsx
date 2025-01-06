@@ -136,7 +136,7 @@ export default function DynamicHeader() {
         }}
         onClick={handleNavbarClick}
       >
-        <div className="flex select-none outline-none flex-row gap-1 h-auto justify-between items-center">
+        <div className="flex select-none outline-none flex-row gap-1 h-auto justify-between items-center cursor-pointer">
           <div>
             {currentVariant != "floatingExpanded" ? (
               <div className="flex flex-row gap-1">
@@ -210,12 +210,13 @@ export default function DynamicHeader() {
         </div>
         {currentVariant == "floatingExpanded" && (
           <div className="p-1 flex flex-col">
-            {selectedOption == "none" && (
+           
+              {selectedOption == "none" && (
               <div className="flex flex-col gap-1 w-full h-auto ">
-                <AuthForm />
-              </div>
-            )}
-            {selectedOption == "settings" && (
+                {/* <AuthForm /> */}
+                WIP (Formularz logowania i rejestracji)
+              </div>)}
+             {selectedOption == "settings" && (
               <div className="flex flex-row gap-1 mt-2">
                 <div
                   onClick={(e) => {
@@ -232,7 +233,7 @@ export default function DynamicHeader() {
                   </div>
                 </div>
               </div>
-            )}
+             )}
           </div>
         )}
       </motion.div>

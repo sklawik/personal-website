@@ -1,3 +1,5 @@
+import Footer from "./components/ui/Footer";
+
 export default async function Home() {
 
   return (
@@ -10,6 +12,7 @@ export default async function Home() {
       <div className="flex flex-col flex-grow w-full min-h-screen snap-end ">
 
       </div>
+      <Footer/>
     </div>
   );
 }
