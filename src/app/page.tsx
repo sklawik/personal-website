@@ -10,7 +10,7 @@ export default async function Home() {
       <h2>Strona internetowa jest w ciągłej budowie..</h2>
     <h4>Stworzona na bazie NextJS15, zawierać będzie dynamiczny, interaktywny nagłówek oddziałowujący na elementy strony www.</h4>  
       <br/>
-     <a href="https://github.com/sklawik/personal-website" className="underline text-black dark:text-white">kod źródłowy</a> 
+     <a target="_blank" href="https://github.com/sklawik/personal-website" className="underline text-black dark:text-white">kod źródłowy</a> 
       </div>
      
       <div className="flex flex-col flex-grow w-full min-h-screen snap-end ">

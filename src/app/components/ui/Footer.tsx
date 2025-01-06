@@ -53,8 +53,14 @@ export default function Footer() {
                 <h6>Użyte technologie</h6>
             </div>
             <motion.div 
-            stag
+            transition={{
+                staggerChildren: 0.5,
+                delayChildren: 0.2
+            }}
             animate={{
+                
+            }}
+            initial={{
                 
             }}
             className="flex sm:flex-row gap-4 w-full flex-col ">
