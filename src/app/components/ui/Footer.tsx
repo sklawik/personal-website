@@ -5,7 +5,7 @@ import { UnlockKeyhole } from 'lucide-react';
 import React, { useEffect, useRef } from 'react'
 import { AiOutlineTrademark } from 'react-icons/ai';
 import { DiMysql } from 'react-icons/di';
-import { FaCss3, FaHtml5, FaJs, FaReact, FaTrademark } from 'react-icons/fa';
+import { FaCss3, FaDocker, FaHtml5, FaJs, FaReact, FaTrademark } from 'react-icons/fa';
 import { RiNextjsFill, RiTailwindCssFill } from 'react-icons/ri';
 import { SiPrisma, SiReacthookform } from 'react-icons/si';
 import { VscJson } from 'react-icons/vsc';
@@ -89,10 +89,15 @@ export default function Footer() {
                     <SiReacthookform />
                     React Hook Form
                 </div>
+                <div className="flex flex-row gap-1 justify-center items-center">
+                    <FaDocker />
+                    Docker
+                </div>
             </div>
             <div className="flex flex-row gap-1 text-xs mt-2 items-center">
                 Sebastian Klawikowski <AiOutlineTrademark />  2025
                 <a href="mailto:sebklawik@gmail.com" className="underline cursor-pointer hover:text-slate-200">kontakt e-mail</a>
+                <a href="https://ovh.com">aplikacje zasila OVH VPS</a>
             </div>
 
         </motion.div>
