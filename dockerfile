@@ -16,6 +16,4 @@ RUN npx prisma generate
 
 EXPOSE 3000
 ENTRYPOINT ["npm", "run", "dockerBuild"]
-COPY .next .next
-
 
