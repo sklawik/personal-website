@@ -55,7 +55,6 @@ export default async function Home() {
             Bardzo prosty skrypt, który załącza się do głównego "ticku" gry i stąd ją modyfikuje w niesmiertelność gracza.
            
           </div>}>
-
           </ProjectChart>
         </section>
       </section>
