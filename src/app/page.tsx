@@ -11,9 +11,12 @@ export default async function Home() {
 
 
       <section className="flex flex-col flex-grow w-full min-h-96  snap-start justify-center items-center dark:text-white text-center">
-        <h2 className="flex flex-row gap-1 justify-center items-center">Strona internetowa jest w ciągłej budowie.. <IoMdBuild />
+        <h2 className="flex flex-row gap-1 justify-center items-center">Work in progress! <IoMdBuild />
         </h2>
-        <h4>Stworzona na bazie NextJS15, zawierać będzie dynamiczny, interaktywny nagłówek oddziałowujący na elementy strony www.</h4>
+        <h4 className="flex flex-row">
+          <AnimateLetters letters="Stworzona_na_bazie_NextJS15,_zawierać_będzie_dynamiczny,_interaktywny_nagłówek_oddziałowujący_na_elementy_strony_www."></AnimateLetters>
+        
+          </h4>
         <br />
         <a target="_blank" href="https://github.com/sklawik/personal-website" className="underline text-black dark:text-white">kod źródłowy</a>
       </section>
