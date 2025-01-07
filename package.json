@@ -6,7 +6,7 @@
     "dev": " npx prisma migrate dev && next dev",
     "build": "npx prisma migrate dev && next build",
    
-    "dockerBuild": "next build && ls -a && eslint . --fix && npx prisma migrate deploy && npx prisma generate &&  next start",
+    "dockerBuild": "npx prisma migrate deploy && next build && eslint . --fix && npx prisma generate && next start",
     "start": "next start",
     "lint": "next lint"
   },
