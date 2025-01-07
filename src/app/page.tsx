@@ -4,7 +4,7 @@ import Footer from "./components/ui/Footer";
 export default async function Home() {
 
   return (
-    <div className=" flex flex-col font-[family-name:var(--font-geist-sans)] justify-center items-center sm:ml-96 sm:mr-96 m-0 snap ">
+    <div className=" flex flex-col font-[family-name:var(--font-geist-sans)] justify-center items-center sm:ml-96 sm:mr-96 m-0 snap  gap-4">
 
 
       <section className="flex flex-col flex-grow w-full min-h-screen  snap-start justify-center items-center dark:text-white text-center">
@@ -16,7 +16,7 @@ export default async function Home() {
       <h1 className="p-2">Projekty</h1>
       <section className="flex flex-col flex-grow w-full min-h-96 snap-end justify-center items-center">
     
-        <section className="flex flex-col ">
+        <section className="flex flex-col gap-4 ">
           <ProjectChart link="https://github.com/sklawik/szkodnik-rp" title="Skrypt dla wieloosobowej gry RolePlay" description={<div>
            Napisałem go będąc w wieku ok. 16 lat (okolice 2017-2018), łącznie pracowałem nad nim przez około 2 lata praktycznie codziennie.
            Symulował on prawdziwe życie w grze video (wliczając pojazdy należące do graczy, grup, frakcji w tym publicznych i porządkowych, systemów własnych domów, mieszkań, instytucji publicznych np. więzień i szpitali), przedmiotów z których gracze mogli korzystać, był głównie tworzony 4fun dla grupy internetowych znajomych oraz dla tych którzy przybyli z internetu czy dla tych, którzy odkryli go drogą pantoflową.
@@ -48,7 +48,30 @@ export default async function Home() {
             
             </ul>
           </div>}></ProjectChart>
+          <ProjectChart 
+          link="https://github.com/sklawik/Steam-library-UI-design/tree/master"
+          title="Edytor interfejsu dla platformy samp napisany w C#"
+          description={<div>
+              
+          </div>}>
 
+          </ProjectChart>
+          <ProjectChart 
+          link="    https://github.com/sklawik/Steam-library-UI-design/tree/masterr"
+          title="Prosty design biblioteki Steam"
+          description={<div className="">
+                Ćwiczyłem w tym projekcie umiejętności flexbox w CSS patrząc na oryginał
+              
+                <img className="w-full h-full"  src="   https://assets.rockpapershotgun.com/images/2019/09/steam-library-3.jpg">
+                </img>
+                <br/>
+                <img className="w-full h-full"  src="https://camo.githubusercontent.com/b62d2462077dde99fe2832b6386ffd2c2b7324fdf190ad8e71bac52ce78c121c/68747470733a2f2f696d6775722e636f6d2f74644d4e4a57612e6a7067">
+                </img>
+               
+          </div>}>
+
+          </ProjectChart>
+      
           Proste modyfkacje do gier napisane w Lua:
           <ProjectChart link="https://github.com/sklawik/TeardownGodmode" title="Godmode dla gry Teardown" description={<div className="flex flex-col">
             <span className="text-red-800">Aktualnie używa: +3500 osób.</span>
