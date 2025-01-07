@@ -75,7 +75,7 @@ export default async function Home() {
           Proste modyfkacje do gier napisane w Lua:
           <ProjectChart link="https://github.com/sklawik/TeardownGodmode" title="Godmode dla gry Teardown" description={<div className="flex flex-col">
             <span className="text-red-800">Aktualnie używa: +3500 osób.</span>
-            Bardzo prosty skrypt, który załącza się do głównego "ticku" gry i stąd ją modyfikuje w niesmiertelność gracza.
+            Bardzo prosty skrypt, który załącza się do głównego ticku gry i stąd ją modyfikuje w niesmiertelność gracza.
            
           </div>}>
           </ProjectChart>
