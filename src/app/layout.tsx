@@ -21,7 +21,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Sebastian Klawikowski",
+  title: "Webdev Sebastian",
   description: "Personal website of a passionate web developer ❤️​ ",
 };
 
