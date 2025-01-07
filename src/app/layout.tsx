@@ -21,8 +21,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Webdev Sebastian",
-  description: "Personal website of a passionate web developer ❤️​ ",
+  title: "Stronka personalna",
+  description: "Portfolio i blog w trakcie budowy napisany w NextJS15​ ",
 };
 
 export default async function RootLayout({
