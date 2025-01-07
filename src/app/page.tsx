@@ -38,7 +38,7 @@ export default async function Home() {
               </li>
               <li>
               <span className="text-gray-800 dark:text-gray-200">Hosting:</span><br/> Aby serwis się utrzymywał, dość prędko przybył okres, w którym nastąpiło przejście z gamingowego hostingu na VPS, który wymagał zabezpieczeń i konfiguracji oraz skryptów, które pilnowały aby
-             w przypadku 'wysypania się aplikacji' mogła ona wrócić online oraz zapisała log z takiego wypadku.
+             w przypadku wysypania się aplikacji mogła ona wrócić online oraz zapisała log z takiego wypadku.
               </li>
               <li>
               <span className="text-purple-600 dark:text-gray-200">Git:</span><br/> 
