@@ -48,6 +48,11 @@ export default async function Home() {
             
             </ul>
           </div>}></ProjectChart>
+
+          Proste modyfkacje do gier napisane w Lua:
+          <ProjectChart link="">
+
+          </ProjectChart>
         </section>
       </section>
       <Footer />
