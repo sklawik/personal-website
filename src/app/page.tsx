@@ -16,7 +16,7 @@ export default async function Home() {
       <h1 className="p-2">Projekty</h1>
       <section className="flex flex-col flex-grow w-full min-h-96 snap-end justify-center items-center">
     
-        <section className="flex flex-row ">
+        <section className="flex flex-col ">
           <ProjectChart link="https://github.com/sklawik/szkodnik-rp" title="Skrypt dla wieloosobowej gry RolePlay" description={<div>
            Napisałem go będąc w wieku ok. 16 lat (okolice 2017-2018), łącznie pracowałem nad nim przez około 2 lata praktycznie codziennie.
            Symulował on prawdziwe życie w grze video (wliczając pojazdy należące do graczy, grup, frakcji w tym publicznych i porządkowych, systemów własnych domów, mieszkań, instytucji publicznych np. więzień i szpitali), przedmiotów z których gracze mogli korzystać, był głównie tworzony 4fun dla grupy internetowych znajomych oraz dla tych którzy przybyli z internetu czy dla tych, którzy odkryli go drogą pantoflową.
@@ -50,7 +50,11 @@ export default async function Home() {
           </div>}></ProjectChart>
 
           Proste modyfkacje do gier napisane w Lua:
-          <ProjectChart link="">
+          <ProjectChart link="https://github.com/sklawik/TeardownGodmode" title="Godmode dla gry Teardown" description={<div className="flex flex-col">
+            <span className="text-red-800">Aktualnie używa: +3500 osób.</span>
+            Bardzo prosty skrypt, który załącza się do głównego "ticku" gry i stąd ją modyfikuje w niesmiertelność gracza.
+           
+          </div>}>
 
           </ProjectChart>
         </section>
