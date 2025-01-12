@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import DynamicHeader from "./components/DynamicHeader";
-import Footer from "./components/Footer";
 
 import ServiceOffline from "./serviceOffline/page";
 import { getPrisma } from "./hooks/getPrisma";
