@@ -10,10 +10,10 @@ export default async function Home() {
     <div className=" flex flex-col font-[family-name:var(--font-geist-sans)] justify-center items-center sm:ml-96 sm:mr-96 m-0 snap gap-4 text-slate-600 dark:text-slate-100 ">
 
 
-      <section className="flex flex-col flex-grow w-full min-h-96  snap-start justify-center items-center dark:text-white text-center ">
+      <section className="flex flex-col flex-grow w-full min-h-96  snap-start justify-center items-center dark:text-white text-center sm:text-lg text-xs">
         <h2 className="flex flex-row gap-1 justify-center items-center">Work in progress! <IoMdBuild />
         </h2>
-        <h4 className="flex flex-row max-w-full overflow-x-hidden">
+        <h4 className="flex flex-row max-w-full overflow-x-hidden ">
           <AnimateLetters letters="Stworzona_na_bazie_NextJS15,_zawierać_będzie_dynamiczny_oraz" />
         </h4>
         <h4 className="flex flex-row">
