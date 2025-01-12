@@ -113,7 +113,7 @@ export default function Footer() {
                     Zustand
                 </div>
             </motion.div>
-            <div className="flex flex-row gap-1 text-xs mt-2 items-center">
+            <div className="flex flex-row gap-1 text-xs mt-2 items-center sm:text-sm ">
                 Sebastian Klawikowski <AiOutlineTrademark />  2025
                 <a href="mailto:sebklawik@gmail.com" className="underline cursor-pointer hover:text-slate-200">kontakt e-mail</a>
                 <a href="https://ovh.com" className="ml-auto flex flex-row gap-1 justify-center items-center">Strone hostuję przez OVH <SiOvh /> 😎
