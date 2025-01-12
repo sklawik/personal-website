@@ -13,7 +13,7 @@ export default async function Home() {
       <section className="flex flex-col flex-grow w-full min-h-96  snap-start justify-center items-center dark:text-white text-center ">
         <h2 className="flex flex-row gap-1 justify-center items-center">Work in progress! <IoMdBuild />
         </h2>
-        <h4 className="flex flex-row">
+        <h4 className="flex flex-row max-w-full overflow-x-hidden">
           <AnimateLetters letters="Stworzona_na_bazie_NextJS15,_zawierać_będzie_dynamiczny,_interaktywny_nagłówek_oddziałowujący_na_elementy_strony_www."></AnimateLetters>
         
           </h4>

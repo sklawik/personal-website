@@ -20,19 +20,19 @@ export default function ProjectChart(props: ProjectChartProps) {
     })
 
     let defaultStyle: Variant = {
-        opacity: 0.1,
-        x: -500,
-      scale: 0.6
+        opacity: 0.2,
+
+      y: -200
     }
 
     let dynamicStyle: Variant = {
         opacity: 1,
         transition:{
-            duration: 0.25,
+            duration: 0.55,
 
         },
-        x: 0,
-        scale: 1
+
+        y: 0,
        
     }
 

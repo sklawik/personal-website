@@ -1,3 +1,5 @@
+// this function will need a complete rewrite from scratch
+
 "use client"
 
 import { AnimatePresence, motion } from 'framer-motion'
@@ -13,10 +15,9 @@ export default function AnimateLetters( props: AnimateLettersProps) {
 
     for (let i = 0; i < props.letters.length; i++) {
         letters.push(props.letters[i])
+        if(i == props.letters.length/2)
+            letters.push('\n')
     }
-
-
-
 
     return (
         <AnimatePresence >
@@ -38,7 +39,9 @@ export default function AnimateLetters( props: AnimateLettersProps) {
                        
                     }}
                 >
+                    
                     {letter=='_' ? '\u00A0' : letter}
+                  
                 </motion.div>
             )}
         </AnimatePresence>
