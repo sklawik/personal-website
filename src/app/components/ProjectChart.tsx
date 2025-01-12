@@ -31,7 +31,6 @@ export default function ProjectChart(props: ProjectChartProps) {
             duration: 0.55,
 
         },
-
         y: 0,
        
     }
