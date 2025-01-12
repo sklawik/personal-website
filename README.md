@@ -2,6 +2,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+# Set up mysql db:
+docker run --name some-mysql -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=123 mysql
+# Do not change the credentials 
+
 First, run the development server:
 
 ```bash
