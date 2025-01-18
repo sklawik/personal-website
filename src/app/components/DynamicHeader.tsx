@@ -213,8 +213,7 @@ export default function DynamicHeader() {
            
               {selectedOption == "none" && (
               <div className="flex flex-col gap-1 w-full h-auto text-wrap ">
-                {/* <AuthForm /> */}
-                W trakcie budowy! (Formularz logowania i rejestracji)
+                <AuthForm /> 
               </div>)}
              {selectedOption == "settings" && (
               <div className="flex flex-row gap-1 mt-2">
