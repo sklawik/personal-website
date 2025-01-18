@@ -62,7 +62,7 @@ export default function Footer() {
             initial={{
                 
             }}
-            className="flex sm:flex-row gap-4 w-full flex-col sm:block hidden">
+            className="flex sm:flex-row gap-4 w-full flex-col sm:flex hidden">
 
                 <div className="flex flex-row gap-1 justify-center items-center ">
                     <FaReact /> React
