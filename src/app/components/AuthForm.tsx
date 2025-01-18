@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Form from "next/form";
 import React, { useActionState, useState } from "react";
 import FadeIn from "./ui/animations/FadeIn";
@@ -53,6 +53,7 @@ export default function AuthForm() {
         <RectangleEllipsis size="16" />
         <input className="" name="password" placeholder="hasło do konta" />
       </section>
+      <AnimatePresence>
       {isSignup &&
         <motion.section
         initial={{
@@ -71,12 +72,22 @@ export default function AuthForm() {
          
           }
         }}
-        
+
+        exit={{
+          scale: 0,
+          opacity: 0,
+          transition: {
+            duration: 0.25
+          }
+        }}
+
         
         className="flex flex-row gap-0.5 p-0.5 justify-center items-center">
           <RectangleEllipsis size="16" />
           <input className="" name="repeatPassword" placeholder="powtórz hasło" />
         </motion.section>}
+      </AnimatePresence>
+      
 
 
       <div className="flex flex-row text-wrap text-xs items-end justify-end w-full p-1">
