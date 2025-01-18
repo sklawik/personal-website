@@ -1,7 +1,6 @@
 "use client"
 
 import { motion, useInView, Variant } from 'framer-motion'
-import { UnlockKeyhole } from 'lucide-react';
 import React, { useEffect, useRef } from 'react'
 import { AiOutlineGlobal, AiOutlineTrademark } from 'react-icons/ai';
 import { DiMysql } from 'react-icons/di';
@@ -63,7 +62,7 @@ export default function Footer() {
             initial={{
                 
             }}
-            className="flex sm:flex-row gap-4 w-full flex-col ">
+            className="flex sm:flex-row gap-4 w-full flex-col sm:block hidden">
 
                 <div className="flex flex-row gap-1 justify-center items-center ">
                     <FaReact /> React
