@@ -33,28 +33,52 @@ export default function AuthForm() {
     <form
       className="flex flex-col gap-1 p-1 h-auto
         text-slate-200 w-full select-none justify-center items-start  bg-black flex-grow 
-        [&_input]:outline-none [&_input]:w-full [&_input]:bg-gray-950 [&_input]:rounded-md [&_input]:placeholder-gray-400 [&_input]:p-2"
+        [&_input]:outline-none [&_input]:w-full [&_input]:bg-gray-950 [&_input]:rounded-md [&_input]:placeholder-gray-400 [&_input]:p-2 "
       action={formAction}>
       {state}
       {isPending && "ladownaie"}
       <div className="w-full border-gray-800 flex flex-row justify-center items-center text-center">
         <section onClick={e => setIsSignup(!isSignup)} className="flex flex-row w-full cursor-pointer *:transition-all *:duration-500">
           <div className={clsx(isSignup ? "flex-grow p-1  rounded-sm select-none" : " flex-grow p-1 rounded-sm bg-white text-black select-none")}>
-          Logowanie
-            </div>
+            Logowanie
+          </div>
           <div className={clsx(isSignup ? "flex-grow p-1 rounded-sm bg-white select-none text-black" : "flex-grow p-1 rounded-sm select-none ")}>Nowe konto</div>
         </section>
       </div>
-      <section className="flex flex-row gap-1 p-1 justify-center items-center">
-         <Mail size="16" />
-         <input className="" name="email" placeholder="adres e-mail" />
-          </section>
-          <section className="flex flex-row gap-1 p-1 justify-center items-center">
+      <section className="flex flex-row gap-0.5 p-0.5 justify-center items-center">
+        <Mail size="16" />
+        <input className="" name="email" placeholder="adres e-mail" />
+      </section>
+      <section className="flex flex-row gap-0.5 p-0.5 justify-center items-center">
+        <RectangleEllipsis size="16" />
+        <input className="" name="password" placeholder="hasło do konta" />
+      </section>
+      {isSignup &&
+        <motion.section
+        initial={{
+          y:-50,
+          opacity: 0,
+          scale: 0,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition:{
+            duration: 0.25,
+            bounce: true,
+            delay: 0.24,
+         
+          }
+        }}
+        
+        
+        className="flex flex-row gap-0.5 p-0.5 justify-center items-center">
           <RectangleEllipsis size="16" />
-         <input className="" name="password" placeholder="hasło do konta" />
-          </section>
-          
-     
+          <input className="" name="repeatPassword" placeholder="powtórz hasło" />
+        </motion.section>}
+
+
       <div className="flex flex-row text-wrap text-xs items-end justify-end w-full p-1">
         <motion.div className="flex flex-col bg-breen-500 w-full flex-grow gap-1 transition-all p-0.5 justify-center items-center"
           initial={{
@@ -70,7 +94,7 @@ export default function AuthForm() {
             }
           }}
         >
-         
+
         </motion.div>
 
         <button type="submit" className=" cursor-pointer flex-grow hover:bg-slate-200 hover:text-black p-0.5 rounded-md duration-500">
