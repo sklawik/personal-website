@@ -223,22 +223,36 @@ export default function DynamicHeader() {
            </AnimatePresence>
              
              {selectedOption == "settings" && (
-              <div className="flex flex-row gap-1 mt-2">
+              <motion.div 
+              initial={{
+                scale: 0
+              }}
+              animate={{
+                scale: 1,
+                transition: {
+                  duration: 0.25,
+                  delay: 0.5
+                }
+              }}
+              
+              className="flex flex-row gap-1 mt-2">
                 <div
                   onClick={(e) => {
                     theme.setTheme();
                   }}
                   className="bg-transperent flex gap-2 dark:bg-slate-800 border-2 border-slate-800 dark:border-gray-900 dark:hover:bg-gray-900 cursor-pointer hover:bg-slate-800 dark:text-white flex-row text-slate-200 text-md px-2 py-2 rounded-md text-nowrap w-auto"
                 >
-                  <div className="justify-center items-center flex flex-row">
+                  <div
+                 
+                  className="justify-center items-center flex flex-row">
                     {theme.darkmode ? (
                       <Moon size="16" />
                     ) : (
                       <SunMoon size="16" />
                     )}
-                  </div>
-                </div>
               </div>
+                </div>
+              </motion.div>
              )}
           </div>
         )}
