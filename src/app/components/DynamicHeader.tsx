@@ -8,6 +8,7 @@ import {
   easeInOut,
   easeIn,
   useScroll,
+  AnimatePresence,
 } from "framer-motion";
 
 import React, { useState } from "react";
@@ -94,6 +95,7 @@ export default function DynamicHeader() {
   const [selectedOption, setSelectedOption] = useState<"settings" | "none">(
     "none"
   );
+
   const [isCursorOnNavbar, setIsCursorOnNavbar] = useState<boolean>(false);
   const [currentVariant, setCurrentVariant] = useState("static");
   const hidden = false;
@@ -210,11 +212,16 @@ export default function DynamicHeader() {
         </div>
         {currentVariant == "floatingExpanded" && (
           <div className="p-1 flex flex-col">
-           
-              {selectedOption == "none" && (
+           <AnimatePresence>
+           {selectedOption == "none" && (
               <div className="flex flex-col gap-1 w-full h-auto text-wrap ">
+             
                 <AuthForm /> 
+       
+            
               </div>)}
+           </AnimatePresence>
+             
              {selectedOption == "settings" && (
               <div className="flex flex-row gap-1 mt-2">
                 <div
