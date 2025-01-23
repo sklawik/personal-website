@@ -55,7 +55,7 @@ export default function AuthForm() {
           },
           height: 3/4
         }}
-        className="flex flex-col gap-1 p-1 h-auto
+        className="flex flex-col gap-1 p-1 h-auto 
         text-slate-200 w-full select-none justify-center items-start  bg-black flex-grow 
         [&_input]:outline-none [&_input]:w-full [&_input]:bg-gray-950 [&_input]:rounded-md [&_input]:placeholder-gray-400 [&_input]:p-2 "
         action={formAction}>
