@@ -1,7 +1,7 @@
 "use client"
 
-import { AnimationType, motion, Variant } from 'framer-motion'
-import React, { ReactElement, useRef, useState } from 'react'
+import {  motion, Variant } from 'framer-motion'
+import React, {  useRef, useState } from 'react'
 
 
 
@@ -41,7 +41,7 @@ const ListItem = (props: any) => {
   </div>
 }
 
-export default function page() {
+export default function Page() {
 
   const [position, setPosition] = useState<Variant>(
     {
