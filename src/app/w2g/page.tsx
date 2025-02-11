@@ -64,7 +64,7 @@ export default async function page() {
             {historyLink &&
                 <div className="flex flex-col gap-2 p-2 *:text-white ">
                     <h6>historia:</h6>
-                    {historyLink.map(link => <div className="w-full text-gray-400 ">
+                    {historyLink.map(link => <div key={link.valueOf()} className="w-full text-gray-400 ">
 
                         <Form action={async e => {
                             "use server"
