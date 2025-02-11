@@ -55,12 +55,12 @@ export default function AuthForm() {
           },
           height: 3/4
         }}
-        className="flex flex-col gap-1 p-1 h-auto 
+        className="flex flex-col gap-1 p-1 h-auto cursor-not-allowed
         text-slate-200 w-full select-none justify-center items-start  bg-black flex-grow 
         [&_input]:outline-none [&_input]:w-full [&_input]:bg-gray-950 [&_input]:rounded-md [&_input]:placeholder-gray-400 [&_input]:p-2 "
         action={formAction}>
         {state}
-        {isPending && "ladownaie"}
+        {isPending && "ładowanie"}
         <div className="w-full border-gray-800 flex flex-row justify-center items-center text-center">
           <section onClick={e => setIsSignup(!isSignup)} className="flex flex-row w-full cursor-pointer *:transition-all *:duration-500">
             <div className={clsx(isSignup ? "flex-grow p-1  rounded-sm select-none" : " flex-grow p-1 rounded-sm bg-white text-black select-none")}>
@@ -71,11 +71,11 @@ export default function AuthForm() {
         </div>
         <section className="flex flex-row gap-0.5 p-0.5 justify-center items-center">
           <Mail size="16" />
-          <input className="" name="email" placeholder="adres e-mail" />
+          <input className="" readOnly disabled name="email" placeholder="adres e-mail" />
         </section>
         <section className="flex flex-row gap-0.5 p-0.5 justify-center items-center">
           <RectangleEllipsis size="16" />
-          <input className="" name="password" placeholder="hasło do konta" />
+          <input className="" disabled name="password" placeholder="hasło do konta" readOnly />
         </section>
       <AnimatePresence>
           {isSignup &&
@@ -108,7 +108,7 @@ export default function AuthForm() {
 
               className="flex flex-row gap-0.5 p-0.5 justify-center items-center">
               <RectangleEllipsis size="16" />
-              <input className="" name="repeatPassword" placeholder="powtórz hasło" />
+              <input className="" name="repeatPassword" readOnly placeholder="powtórz hasło" />
             </motion.section>}
             </AnimatePresence>
         <div className="flex flex-row text-wrap text-xs items-end justify-end w-full p-1">
