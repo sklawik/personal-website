@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import Form from 'next/form'
+import { headers } from 'next/headers'
 import { time, timeStamp } from 'node:console'
 import React from 'react'
 
@@ -40,6 +41,8 @@ let setCurrentVideo = (youtubeurl: any) =>{
 }
 
 export default async function page() {
+
+    let x = await headers()
 
     currentViewers++;
 
