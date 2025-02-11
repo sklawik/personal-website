@@ -43,7 +43,6 @@ export default async function page() {
 
     currentViewers++;
 
-
     return (
         <div className="w-full h-screen flex bg-black flex-col gap-2 *:text-black [&_button]:bg-white justify-center items-center text-white">
             <Form className="flex flex-col gap-2" action={async (e: FormData) => {
@@ -81,12 +80,8 @@ export default async function page() {
                         }}>
                             <button className="bg-none text-black bg-black" type="submit">{link}</button>
                         </Form>
-
-
                     </div>)}
                 </div>}
-
-
         </div>
     )
 }
