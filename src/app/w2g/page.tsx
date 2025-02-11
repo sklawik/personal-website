@@ -11,6 +11,10 @@ let currentVideoUrl: undefined | string = undefined
 
 let historyLink: string[] = [""]
 
+function timeNow(){
+    return Math.floor(Date.now() / 1000)
+}
+
 function convertToEmbedUrl(youtubeUrl: any): string | undefined {
     const url = new URL(youtubeUrl);
 
@@ -23,14 +27,14 @@ function convertToEmbedUrl(youtubeUrl: any): string | undefined {
 
 
 
-    let timestampToPlay = Math.floor(Date.now() / 1000) - timestampUploaded
+    let timestampToPlay = timeNow() - timestampUploaded
 
     return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&start=${timestampToPlay}&mute=1` : undefined;
 }
 
 let setCurrentVideo = (youtubeurl: any) =>{
-    timestampUploaded = Math.floor(Date.now() / 1000)
-    currentVideoUrl = convertToEmbedUrl(youtubeurl)
+
+    currentVideoUrl = youtubeurl
     if (currentVideoUrl)
         historyLink.push(youtubeurl)
 }
@@ -44,7 +48,9 @@ export default async function page() {
         <div className="w-full h-screen flex bg-black flex-col gap-2 *:text-black [&_button]:bg-white justify-center items-center text-white">
             <Form className="flex flex-col gap-2" action={async (e: FormData) => {
                 "use server"
+                timestampUploaded = timeNow();
                setCurrentVideo(e.get('url')?.toString())
+               
                 revalidatePath("/w2g")
             }}
             >
@@ -52,8 +58,8 @@ export default async function page() {
                 {currentVideoUrl != undefined &&
                     <div>
 
-                        <iframe width="560" height="315" src={currentVideoUrl} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-
+                        <iframe width="560" height="315" src={convertToEmbedUrl(currentVideoUrl)} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        <span className="text-white">odtwarzanie: {currentVideoUrl}</span>
                     </div>
                 }
                 <input className="text-red-100" placeholder={currentVideoUrl ? currentVideoUrl : "link do youtube"} type="text" name="url" />
@@ -68,6 +74,7 @@ export default async function page() {
 
                         <Form action={async e => {
                             "use server"
+                            timestampUploaded = timeNow();
                             setCurrentVideo(link)
                                 revalidatePath("/w2g")
                             
