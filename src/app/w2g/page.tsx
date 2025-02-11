@@ -12,7 +12,7 @@ let currentVideoUrl: undefined | string = undefined
 let historyLink: string[] = [""]
 
 function timeNow(){
-    return Math.floor(Date.now() / 1000)
+    return Math.floor(Date.now()/ 1000)
 }
 
 function convertToEmbedUrl(youtubeUrl: any): string | undefined {
