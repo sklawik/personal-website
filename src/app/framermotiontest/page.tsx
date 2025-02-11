@@ -55,13 +55,13 @@ export default function Page() {
     <div className="flex-grow  w-screen h-screen flex justify-center items-center ">
       <nav className="flex flex-row gap-2 w-auto rounded-full border-gray-800 uppercase border-2 text-white 
         relative p-2 ">
-        <ListItem setPosition={setPosition}>Home</ListItem>
-        <ListItem setPosition={setPosition}>Pricing</ListItem>
-        <ListItem setPosition={setPosition}>Features</ListItem>
-        <ListItem setPosition={setPosition}>Docs</ListItem>
-        <ListItem setPosition={setPosition}>Blog</ListItem>
-        <Cursor position={position} />
-      </nav>
-    </div>
+        <ListItem setPosition={setPosition}>Home</ListItem>  
+        <ListItem setPosition={setPosition}>Pricing</ListItem>   
+        <ListItem setPosition={setPosition}>Features</ListItem>       
+        <ListItem setPosition={setPosition}>Docs</ListItem>      
+        <ListItem setPosition={setPosition}>Blog</ListItem>     
+        <Cursor position={position} />    
+      </nav>       
+    </div>      
   )
 }
