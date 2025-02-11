@@ -7,12 +7,14 @@ import React from 'react'
 
 let currentViewers = 0
 let timestampUploaded = 0
-let currentVideoUrl: undefined | string  = undefined
+let currentVideoUrl: undefined | string = undefined
 
-function convertToEmbedUrl(youtubeUrl: string ) {
+let historyLink: string[] = [""]
+
+function convertToEmbedUrl(youtubeUrl: any): string | undefined {
     const url = new URL(youtubeUrl);
-    
-    let videoId: any = "";
+
+    let videoId: string | null = "";
     if (url.hostname === "youtu.be") {
         videoId = url.pathname.substring(1); // Get ID from youtu.be/VIDEO_ID
     } else if (url.hostname.includes("youtube.com")) {
@@ -20,12 +22,18 @@ function convertToEmbedUrl(youtubeUrl: string ) {
     }
 
 
-    
-    let timestampToPlay = Math.floor(Date.now()/1000)- timestampUploaded
+
+    let timestampToPlay = Math.floor(Date.now() / 1000) - timestampUploaded
 
     return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&start=${timestampToPlay}&mute=1` : undefined;
 }
 
+let setCurrentVideo = (youtubeurl: any) =>{
+    timestampUploaded = Math.floor(Date.now() / 1000)
+    currentVideoUrl = convertToEmbedUrl(youtubeurl)
+    if (currentVideoUrl)
+        historyLink.push(youtubeurl)
+}
 
 export default async function page() {
 
@@ -36,8 +44,7 @@ export default async function page() {
         <div className="w-full h-screen flex bg-black flex-col gap-2 *:text-black [&_button]:bg-white justify-center items-center text-white">
             <Form className="flex flex-col gap-2" action={async (e: FormData) => {
                 "use server"
-                timestampUploaded=Math.floor(Date.now()/1000)
-                currentVideoUrl = e.get('url')?.toString()
+               setCurrentVideo(e.get('url')?.toString())
                 revalidatePath("/w2g")
             }}
             >
@@ -45,15 +52,32 @@ export default async function page() {
                 {currentVideoUrl != undefined &&
                     <div>
 
-                        <iframe width="560"   height="315" src={convertToEmbedUrl(currentVideoUrl)} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                        odtwarzanie: {convertToEmbedUrl(currentVideoUrl)}
+                        <iframe width="560" height="315" src={currentVideoUrl} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
                     </div>
                 }
-                <input type="text" name="url" />
+                <input className="text-red-100" placeholder={currentVideoUrl ? currentVideoUrl : "link do youtube"} type="text" name="url" />
                 <button type='submit'>Przeslij</button>
 
             </Form>
             {currentVideoUrl == undefined && <div>Zadne video nie jest grane</div>}
+            {historyLink &&
+                <div className="flex flex-col gap-2 p-2 *:text-white ">
+                    <h6>historia:</h6>
+                    {historyLink.map(link => <div className="w-full text-gray-400 ">
+
+                        <Form action={async e => {
+                            "use server"
+                            setCurrentVideo(link)
+                                revalidatePath("/w2g")
+                            
+                        }}>
+                            <button className="bg-none text-black bg-black" type="submit">{link}</button>
+                        </Form>
+
+
+                    </div>)}
+                </div>}
 
 
         </div>
