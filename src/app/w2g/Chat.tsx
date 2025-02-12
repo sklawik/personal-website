@@ -13,7 +13,7 @@ export default function Chat() {
             socket = new WebSocket('ws://localhost:4001');
         }
         else{
-            socket = new WebSocket('wss://wss.sklawik.pl:4001');
+            socket = new WebSocket('wss://sklawik.pl:4001');
         }
         socket.onopen = (ev: Event) => {
             console.log("connection open on the client")
