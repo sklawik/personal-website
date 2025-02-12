@@ -7,7 +7,13 @@ export default function Chat() {
 
     let socket: WebSocket
 
-    socket = new WebSocket('ws://localhost:4001');
+    if(window.location.hostname == "localhost"){
+        socket = new WebSocket('ws://localhost:4001');
+    }
+    else{
+        socket = new WebSocket('wss://localhost:4001');
+    }
+ 
         socket.onopen = (ev: Event) => {
             console.log("connection open on the client")
         }
