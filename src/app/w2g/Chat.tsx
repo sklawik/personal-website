@@ -23,14 +23,10 @@ export default function Chat() {
             console.log('client received:' + event.data);
         };
     })
-
-    
- 
       
     return (
         <div>
             <button onClick={e => {
-
                 socket.send("hi from client")
             }}>send shit</button>
         </div>
