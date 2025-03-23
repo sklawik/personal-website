@@ -7,8 +7,6 @@ if( wssServer == undefined ){
    
         wssServer = new WebSocketServer({ port: 4001 })
     
-
-    
 }
 
 export default wssServer

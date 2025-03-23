@@ -1,7 +1,8 @@
+"use client"
 import { easeIn, easeInOut, motion } from 'framer-motion'
 import React, { PropsWithChildren } from 'react'
 
-export default function FadeIn(props: PropsWithChildren) {
+export default function FadeIn (props: PropsWithChildren) {
 
   return (
     <motion.div

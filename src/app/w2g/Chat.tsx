@@ -28,7 +28,7 @@ export default function Chat() {
         <div>
             <button onClick={e => {
                 socket.send("hi from client")
-            }}>send shit</button>
+            }}>send</button>
         </div>
     )
 }
